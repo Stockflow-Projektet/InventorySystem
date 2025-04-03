@@ -1,4 +1,28 @@
 ﻿@page
 @model Inventory.Frontend.Pages.Orders.IndexModel
+
 @{
+    ViewData["Title"] = "Orders";
 }
+
+<h2>Orders</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Order Id</th>
+            <th>Order Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-page="Create">Create New Order</a>

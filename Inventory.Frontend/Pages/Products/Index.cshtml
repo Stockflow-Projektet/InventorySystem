@@ -1,4 +1,36 @@
 ﻿@page
 @model Inventory.Frontend.Pages.Products.IndexModel
+
 @{
+    ViewData["Title"] = "Products";
 }
+
+<h2>Product List</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Manufacturer</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.Type</td>
+                <td>@product.Name</td>
+                <td>@product.Manufacturer</td>
+                <td>@product.Price</td>
+                <td>@product.Amount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-page="Create">Create New Product</a>

@@ -1,4 +1,21 @@
 ﻿@page
 @model Inventory.Frontend.Pages.Orders.CreateModel
 @{
+    ViewData["Title"] = "Create New Order";
 }
+
+<h2>Create New Order</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="NewOrder.OrderDate" class="form-label">Order Date</label>
+        <input asp-for="NewOrder.OrderDate" class="form-control" type="date" />
+        <span asp-validation-for="NewOrder.OrderDate" class="text-danger"></span>
+    </div>
+
+    <!-- If you have an OrderDetailViewModel, you could add fields for
+         product selection, quantity, etc. But that can get more complex. -->
+
+    <button type="submit" class="btn btn-success">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

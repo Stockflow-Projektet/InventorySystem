@@ -1,9 +1,17 @@
-﻿namespace Inventory.Frontend.Views
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace Inventory.Frontend.Views
 {
     public class OrderViewModel
     {
-        public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; }
-        // You might also include a list of products, customer info, etc.
+        public long OrderId { get; set; }
+
+        [Required]
+        public DateTime OrderDate { get; set; } = DateTime.Now;
+
+        // Optional: If you want to include a list of order details
+        public List<OrderDetailViewModel> Details { get; set; } = new();
     }
 }

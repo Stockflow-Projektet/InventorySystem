@@ -1,11 +1,14 @@
-﻿using Inventory.Frontend.Models;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Inventory.Frontend.Views;
 
 namespace Inventory.Frontend.Services.Interfaces
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductViewModel>> GetAllProductsAsync();
-        Task<bool> CreateProductAsync(ProductViewModel model);
-        // Possibly more methods, e.g., for editing, deleting, etc.
+        Task<IEnumerable<ProductViewModel>> GetProductsAsync();
+        Task<ProductViewModel> GetProductByIdAsync(long productId);
+        Task CreateProductAsync(ProductViewModel product);
+        // You might add more methods as needed, e.g. Update, Delete, etc.
     }
 }
