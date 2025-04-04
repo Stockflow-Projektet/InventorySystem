@@ -14,9 +14,9 @@ public class ProductService : IProductService
         return await _repository.GetAllAsync();
     }
 
-    public async Task<Product> GetProductByIdAsync(int id)
+    public async Task<Product> GetProductByIdAsync(int productId)
     {
-        return await _repository.GetByIdAsync(id);
+        return await _repository.GetByIdAsync(productId);
     }
 
     public async Task<IEnumerable<Product>> QueryProductsAsync(string query)

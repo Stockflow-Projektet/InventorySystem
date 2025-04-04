@@ -2,11 +2,12 @@
 
 namespace Inventory.Core.Factories;
 
-public class PhysicalOrderFactory : IOrderFactory
+public class BookFactory : IOrderFactory
 {
     
-    public IProduct CreateProduct(string productType)
+    public Product CreateProduct(string title, string description, decimal price, int )
     {
-        return new Book { TypeId = productType };
+        Product book = new Book();
+        book.ProductType = productType;
     }
 }

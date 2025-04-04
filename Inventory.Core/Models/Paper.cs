@@ -2,8 +2,12 @@
 
 public class Paper : Product
 {
-    string TypeId {get; set;}
+    string Type {get; set;}
     string Name {get; set;}
     string Description {get; set;}
-    string Price {get; set;}
+    Decimal Price {get; set;}
+    string PaperSize {get; set;}
+    decimal PaperWeight {get; set;}
+    string CoatingType {get; set;}
+    
 }

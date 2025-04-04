@@ -1,9 +1,27 @@
-﻿namespace Inventory.Core;
+﻿using Inventory.Core.Models;
 
-public class OrderService
+namespace Inventory.Core;
+
+public class OrderService : IOrderService
 {
-    public IOrder CreateOrder()
+    public IOrder StartOrder()
+    {
+        List<Product> Basket = new List<Product>();
+    }
+
+    public void PlaceOrder()
     {
         
+    }
+
+    public void DeleteOrder()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddProductToBasket(int productId)
+    {
+        Product product = GetProductByIdAsync(int productId);
+        list 
     }
 }
