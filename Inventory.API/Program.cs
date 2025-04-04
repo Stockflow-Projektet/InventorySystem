@@ -1,3 +1,8 @@
+using Serilog;
+using Inventory.Logging;
+
+LoggerConfigurator.ConfigureLogger("API");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

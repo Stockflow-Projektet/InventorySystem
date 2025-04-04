@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Serilog;
 
 namespace Inventory.Frontend.Pages
 {

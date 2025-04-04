@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Inventory.Frontend.Services.Implementations;
+using Serilog;
+using Inventory.Logging;
+
+LoggerConfigurator.ConfigureLogger("Frontend");
 
 var builder = WebApplication.CreateBuilder(args);
 
