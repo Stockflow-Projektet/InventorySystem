@@ -5,6 +5,7 @@ using Inventory.Frontend.Services;
 using Inventory.Frontend.Views;
 using System.Collections.Generic;
 using System;
+using Inventory.Frontend.Services.MockImplementations;
 
 namespace Inventory.Tests.Frontend.Services.Mocks
 {

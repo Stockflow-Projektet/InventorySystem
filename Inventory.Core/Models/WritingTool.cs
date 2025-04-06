@@ -1,13 +1,16 @@
-﻿namespace Inventory.Core.Models;
+﻿using Inventory.Core.Models.Abstracts;
+
+namespace Inventory.Core.Models;
 
 public class WritingTool : Product
 {
-    string Type {get; set;}
-    string Name {get; set;}
-    string Description {get; set;}
-    Decimal Price {get; set;}
-    string InkColor {get; set;}
-    string InkType {get; set;}
-    decimal TipSize {get; set;}
-    bool IsErasable {get; set;}
+    private int ProductId { get; set; }
+    private string Type { get; set; }
+    private string Name { get; set; }
+    private string Description { get; set; }
+    private decimal Price { get; set; }
+    private string InkColor { get; set; }
+    private string InkType { get; set; }
+    private decimal TipSize { get; set; }
+    private bool IsErasable { get; set; }
 }

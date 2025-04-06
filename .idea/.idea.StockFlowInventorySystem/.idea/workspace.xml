@@ -12,7 +12,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aabb8751-a111-418e-aa25-52a003ff2183" name="Changes" comment="" />
+    <list default="true" id="aabb8751-a111-418e-aa25-52a003ff2183" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/BookFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/OrderFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IOrderFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IProductFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Abstracts/IOrder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Abstracts/IOrderItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Abstracts/Product.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Order.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/OrderItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Repositories/IInventoryRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/InventoryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/OrderService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IInventoryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IOrderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/BookFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/IOrderFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/IProductFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/PaperFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/PaperFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/WritingImplementFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/WritingImplementFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/IOrderService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/Book.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/IOrder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/OrderDetail.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/Paper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/Paper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/Product.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/ProductType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/WritingTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/WritingTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/OrderService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Repositories/IOrderRepositiory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Repositories/IOrderRepositiory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Repositories/IProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Repositories/IProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/OrderMockService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/OrderMockService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/ProductMockService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/ProductMockService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/OrderMockServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/OrderMockServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/ProductMockServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/ProductMockServiceTests.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +62,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="CoreLogicSkeleton" />
+        <entry key="$PROJECT_DIR$" value="DevelopmentSprint1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,8 +79,12 @@
     &quot;accountId&quot;: &quot;b4b725c5-408f-4926-993b-b5893644760e&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Models/IOrderItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Models/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -50,20 +95,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "CoreLogic",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.API: IIS Express">
     <configuration name="Inventory.API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" />
@@ -166,6 +212,11 @@
       <updated>1743763269821</updated>
       <workItem from="1743763271933" duration="319000" />
       <workItem from="1743763659057" duration="773000" />
+      <workItem from="1743954496567" duration="523000" />
+      <workItem from="1743955069356" duration="33000" />
+      <workItem from="1743955534917" duration="711000" />
+      <workItem from="1743956342196" duration="9013000" />
+      <workItem from="1743965443360" duration="4358000" />
     </task>
     <servers />
   </component>

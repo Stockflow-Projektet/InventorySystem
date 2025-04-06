@@ -1,4 +1,4 @@
-﻿using Inventory.Core.Models;
+﻿using Inventory.Core.Models.Abstracts;
 
 namespace Inventory.Core.Repositories;
 

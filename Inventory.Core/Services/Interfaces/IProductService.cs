@@ -1,6 +1,6 @@
-﻿using Inventory.Core.Models;
+﻿using Inventory.Core.Models.Abstracts;
 
-namespace Inventory.Core;
+namespace Inventory.Core.Services.Interfaces;
 
 public interface IProductService
 {

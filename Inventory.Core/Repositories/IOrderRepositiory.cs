@@ -1,4 +1,6 @@
-﻿namespace Inventory.Core.Repositories;
+﻿using Inventory.Core.Models.Abstracts;
+
+namespace Inventory.Core.Repositories;
 
 public interface IOrderRepository
 {
@@ -7,4 +9,4 @@ public interface IOrderRepository
     List<IOrder> GetOrdersAsync();
     void UpdateOrder(string orderId);
     void DeleteOrder(string orderId);
-};
+}

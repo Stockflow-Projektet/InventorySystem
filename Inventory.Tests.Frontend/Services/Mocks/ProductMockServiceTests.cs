@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Inventory.Frontend.Services;
 using Inventory.Frontend.Views;
 using System.Collections.Generic;
+using Inventory.Frontend.Services.MockImplementations;
 
 namespace Inventory.Tests.Frontend.Services.Mocks
 {

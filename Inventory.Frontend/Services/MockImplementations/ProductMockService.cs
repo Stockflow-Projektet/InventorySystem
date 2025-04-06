@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Inventory.Frontend.Services.Interfaces;
+﻿using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
 
-namespace Inventory.Frontend.Services
+namespace Inventory.Frontend.Services.MockImplementations
 {
     public class ProductMockService : IProductService
     {

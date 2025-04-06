@@ -1,13 +1,20 @@
-﻿using Inventory.Core.Models;
+﻿using Inventory.Core.Factories.Interfaces;
+using Inventory.Core.Models.Abstracts;
 using Inventory.Core.Repositories;
+using Inventory.Core.Services.Interfaces;
 
-namespace Inventory.Core;
+namespace Inventory.Core.Services.Implementations;
 
 public class ProductService : IProductService
 {
     private readonly IProductRepository _repository;
+    private readonly IProductFactory _productFactory;
 
-    public ProductService(IProductRepository repository) => _repository = repository;
+    public ProductService(IProductRepository repository, IProductFactory productFactory)
+    {
+        _repository = repository;
+        _productFactory = productFactory;
+    }
 
     public async Task<IEnumerable<Product>> GetProductsAsync()
     {
@@ -24,8 +31,9 @@ public class ProductService : IProductService
         return await _repository.QueryAsync(query);
     }
 
-    public async Task<Product> AddProductAsync(Product product)
+    public async Task<Product> AddProductAsync(string productType)
     {
+        Product product = _productFactory.CreateProduct();
         await _repository.AddAsync(product);
         return product;
     }
@@ -33,10 +41,7 @@ public class ProductService : IProductService
     public async Task<Product> UpdateProductAsync(int id, Product product)
     {
         var existingProduct = await _repository.GetByIdAsync(id);
-        if (existingProduct == null)
-        {
-            return null;  // Or throw an exception
-        }
+        if (existingProduct == null) return null; // Or throw an exception
 
         existingProduct.Name = product.Name;
         existingProduct.Description = product.Description;
@@ -49,10 +54,7 @@ public class ProductService : IProductService
     public async Task<bool> DeleteProductAsync(int id)
     {
         var existingProduct = await _repository.GetByIdAsync(id);
-        if (existingProduct == null)
-        {
-            return false;
-        }
+        if (existingProduct == null) return false;
 
         await _repository.DeleteAsync(id);
         return true;
