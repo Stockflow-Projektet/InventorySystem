@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
 using Serilog;
-
+ 
 namespace Inventory.Frontend.Services
 {
     public class ProductMockService : IProductService
@@ -80,21 +80,21 @@ namespace Inventory.Frontend.Services
                 NumberOfPages = 528
             }
         };
-
+ 
         public Task<IEnumerable<ProductViewModel>> GetProductsAsync()
         {
             Log.Verbose("Mock: Fetching all products (no filter).");
             Log.Debug("Mock: Currently we have {Count} products in memory.", _products.Count);
             return Task.FromResult(_products.AsEnumerable());
         }
-
+ 
         public Task<IEnumerable<ProductViewModel>> GetProductsByTypeAsync(string productType)
         {
             try
             {
                 Log.Verbose("Mock: Fetching products by type: {ProductType}", productType);
                 var filtered = _products.Where(p => p.Type == productType).ToList();
-
+ 
                 if (!filtered.Any())
                 {
                     Log.Warning("Mock: No products found with type {ProductType}.", productType);
@@ -103,7 +103,7 @@ namespace Inventory.Frontend.Services
                 {
                     Log.Debug("Mock: Found {Count} products of type {ProductType}.", filtered.Count, productType);
                 }
-
+ 
                 return Task.FromResult(filtered.AsEnumerable());
             }
             catch (Exception ex)
@@ -112,12 +112,12 @@ namespace Inventory.Frontend.Services
                 throw;
             }
         }
-
+ 
         public Task<ProductViewModel> GetProductByIdAsync(long productId)
         {
             Log.Verbose("Mock: Fetching product by ID = {ProductId}", productId);
             var product = _products.FirstOrDefault(p => p.ProductId == productId);
-
+ 
             if (product == null)
             {
                 Log.Warning("Mock: No product found with ID {ProductId}", productId);
@@ -126,10 +126,10 @@ namespace Inventory.Frontend.Services
             {
                 Log.Debug("Mock: Found product {Name} (ID={ProductId})", product.Name, productId);
             }
-
+ 
             return Task.FromResult(product);
         }
-
+ 
         public Task CreateProductAsync(ProductViewModel product)
         {
             if (product == null)
@@ -137,13 +137,13 @@ namespace Inventory.Frontend.Services
                 Log.Warning("Mock: CreateProductAsync called with null product!");
                 return Task.CompletedTask;
             }
-
+ 
             try
             {
                 Log.Information("Mock: Creating new product: {@Product}", product);
                 product.ProductId = _products.Max(p => p.ProductId) + 1;
                 _products.Add(product);
-
+ 
                 Log.Information("Mock: Successfully added product with ID {ProductId}", product.ProductId);
                 return Task.CompletedTask;
             }

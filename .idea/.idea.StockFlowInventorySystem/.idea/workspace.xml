@@ -12,7 +12,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aabb8751-a111-418e-aa25-52a003ff2183" name="Changes" comment="" />
+    <list default="true" id="aabb8751-a111-418e-aa25-52a003ff2183" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="CoreLogicSkeleton" />
+        <entry key="$PROJECT_DIR$" value="DevelopmentSprint1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,6 +41,12 @@
     &quot;accountId&quot;: &quot;b4b725c5-408f-4926-993b-b5893644760e&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Inventory.API/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Models/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="Toolset" />
   </component>
@@ -52,15 +61,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Inventory.API: IIS Express.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CoreLogic&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;RiderNuGetOptionsPageId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -166,6 +177,19 @@
       <updated>1743763269821</updated>
       <workItem from="1743763271933" duration="319000" />
       <workItem from="1743763659057" duration="773000" />
+      <workItem from="1743954496567" duration="523000" />
+      <workItem from="1743955069356" duration="33000" />
+      <workItem from="1743955534917" duration="711000" />
+      <workItem from="1743956342196" duration="9013000" />
+      <workItem from="1743965443360" duration="18330000" />
+      <workItem from="1743983934786" duration="1056000" />
+      <workItem from="1743985504635" duration="1267000" />
+      <workItem from="1743986865142" duration="262000" />
+      <workItem from="1743987143370" duration="107000" />
+      <workItem from="1743987371198" duration="272000" />
+      <workItem from="1743987956388" duration="87000" />
+      <workItem from="1743988057222" duration="504000" />
+      <workItem from="1743988756441" duration="887000" />
     </task>
     <servers />
   </component>
@@ -184,7 +208,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="CoreLogicSkeleton" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>

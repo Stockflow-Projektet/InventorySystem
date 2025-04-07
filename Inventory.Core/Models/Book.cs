@@ -1,11 +1,14 @@
-﻿namespace Inventory.Core.Models;
+﻿using Inventory.Core.Models.Abstracts;
+
+namespace Inventory.Core.Models;
 
 public class Book : Product
 {
-    public string Type = "Book";
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public Decimal Price { get; set; }
+    string Type { get; set; }
+    int ProductId { get; set; }
+    string Name { get; set; }
+    string Description { get; set; }
+    decimal Price { get; set; }
     public int Pages { get; set; }
     public string Author { get; set; }
     public string Publisher { get; set; }

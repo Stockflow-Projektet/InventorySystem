@@ -1,5 +1,6 @@
 ﻿@page
-@model Inventory.Frontend.Pages.Orders.IndexModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IndexModel
 
 @{
     ViewData["Title"] = "Orders";
@@ -9,19 +10,19 @@
 
 <table class="table table-bordered table-striped table-hover">
     <thead>
-        <tr>
-            <th>Order Id</th>
-            <th>Order Date</th>
-        </tr>
+    <tr>
+        <th>Order Id</th>
+        <th>Order Date</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var order in Model.Orders)
-        {
-            <tr>
-                <td>@order.OrderId</td>
-                <td>@order.OrderDate.ToShortDateString()</td>
-            </tr>
-        }
+    @foreach (var order in Model.Orders)
+    {
+        <tr>
+            <td>@order.OrderId</td>
+            <td>@order.OrderDate.ToShortDateString()</td>
+        </tr>
+    }
     </tbody>
 </table>
 

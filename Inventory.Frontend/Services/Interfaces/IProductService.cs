@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Inventory.Frontend.Views;
-
+ 
 namespace Inventory.Frontend.Services.Interfaces
 {
     public interface IProductService

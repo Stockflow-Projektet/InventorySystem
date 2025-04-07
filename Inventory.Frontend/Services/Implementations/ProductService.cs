@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
 using Serilog;  // For logging
-
+ 
 namespace Inventory.Frontend.Services.Implementations
 {
     public class ProductService : IProductService
     {
         private readonly HttpClient _httpClient;
-
+ 
         public ProductService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-
+ 
         public async Task<IEnumerable<ProductViewModel>> GetProductsAsync()
         {
             Log.Verbose("Fetching all products (no filter).");
@@ -33,7 +33,7 @@ namespace Inventory.Frontend.Services.Implementations
                 throw;
             }
         }
-
+ 
         public async Task<IEnumerable<ProductViewModel>> GetProductsByTypeAsync(string productType)
         {
             Log.Verbose("Fetching products by type: {ProductType}", productType);
@@ -51,7 +51,7 @@ namespace Inventory.Frontend.Services.Implementations
                 throw;
             }
         }
-
+ 
         public async Task<ProductViewModel> GetProductByIdAsync(long productId)
         {
             Log.Verbose("Fetching product by id = {ProductId}", productId);
@@ -70,7 +70,7 @@ namespace Inventory.Frontend.Services.Implementations
                 throw;
             }
         }
-
+ 
         public async Task CreateProductAsync(ProductViewModel product)
         {
             Log.Information("Creating new product: {@Product}", product);

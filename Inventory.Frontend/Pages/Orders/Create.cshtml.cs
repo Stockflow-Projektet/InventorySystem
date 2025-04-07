@@ -3,34 +3,34 @@ using Inventory.Frontend.Views;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Serilog;
-
+ 
 namespace Inventory.Frontend.Pages.Orders
 {
     public class CreateModel : PageModel
     {
         private readonly IOrderService _orderService;
         private readonly IProductService _productService;
-
+ 
         [BindProperty]
         public OrderViewModel NewOrder { get; set; } = new();
-
+ 
         // Optional: so we can show product info or fill details
         [BindProperty(SupportsGet = true)]
         public long? ProductId { get; set; }
-
+ 
         public CreateModel(IOrderService orderService, IProductService productService)
         {
             _orderService = orderService;
             _productService = productService;
         }
-
+ 
         public async Task OnGetAsync()
         {
             if (ProductId.HasValue)
             {
                 // The user clicked "Order" from a product card
                 Log.Debug("User is creating an order from productId={ProductId}", ProductId);
-
+ 
                 var product = await _productService.GetProductByIdAsync(ProductId.Value);
                 if (product != null)
                 {
@@ -43,7 +43,7 @@ namespace Inventory.Frontend.Pages.Orders
                         // DepotId = ??? if you have a default depot
                     };
                     NewOrder.Details.Add(detail);
-
+ 
                     // Maybe set a default date
                     NewOrder.OrderDate = DateTime.Now;
                 }
@@ -58,20 +58,20 @@ namespace Inventory.Frontend.Pages.Orders
                 Log.Debug("User is creating a new order with no preselected product.");
             }
         }
-
+ 
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
+ 
             // Log the data the user submitted
             Log.Information("User submitted a form to create an order with data: {@Order}", NewOrder);
-
+ 
             // Call the service to send data to the API
             await _orderService.CreateOrderAsync(NewOrder);
-
+ 
             return RedirectToPage("Index");
         }
     }

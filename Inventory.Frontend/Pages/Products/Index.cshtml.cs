@@ -2,20 +2,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
 using Serilog;
-
+ 
 namespace Inventory.Frontend.Pages.Products
 {
     public class IndexModel : PageModel
     {
         private readonly IProductService _productService;
-
+ 
         public IndexModel(IProductService productService)
         {
             _productService = productService;
         }
-
+ 
         public List<ProductViewModel> Products { get; set; } = new();
-
+ 
         public async Task OnGetAsync(string productType = null)
         {
             if (!string.IsNullOrWhiteSpace(productType))

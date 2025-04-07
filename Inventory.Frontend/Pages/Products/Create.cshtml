@@ -1,5 +1,6 @@
 ﻿@page
-@model Inventory.Frontend.Pages.Products.CreateModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model CreateModel
 @{
     ViewData["Title"] = "Create New Product";
 }
@@ -9,37 +10,37 @@
 <form method="post">
     <div class="mb-3">
         <label asp-for="NewProduct.Type" class="form-label"></label>
-        <input asp-for="NewProduct.Type" class="form-control" />
+        <input asp-for="NewProduct.Type" class="form-control"/>
         <span asp-validation-for="NewProduct.Type" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="NewProduct.Name" class="form-label"></label>
-        <input asp-for="NewProduct.Name" class="form-control" />
+        <input asp-for="NewProduct.Name" class="form-control"/>
         <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="NewProduct.Manufacturer" class="form-label"></label>
-        <input asp-for="NewProduct.Manufacturer" class="form-control" />
+        <input asp-for="NewProduct.Manufacturer" class="form-control"/>
         <span asp-validation-for="NewProduct.Manufacturer" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="NewProduct.Description" class="form-label"></label>
-        <input asp-for="NewProduct.Description" class="form-control" />
+        <input asp-for="NewProduct.Description" class="form-control"/>
         <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="NewProduct.Price" class="form-label"></label>
-        <input asp-for="NewProduct.Price" class="form-control" />
+        <input asp-for="NewProduct.Price" class="form-control"/>
         <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="NewProduct.Amount" class="form-label"></label>
-        <input asp-for="NewProduct.Amount" class="form-control" />
+        <input asp-for="NewProduct.Amount" class="form-control"/>
         <span asp-validation-for="NewProduct.Amount" class="text-danger"></span>
     </div>
 
