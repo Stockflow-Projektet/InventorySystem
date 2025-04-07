@@ -7,8 +7,9 @@ namespace Inventory.Frontend.Services.Interfaces
     public interface IProductService
     {
         Task<IEnumerable<ProductViewModel>> GetProductsAsync();
+        Task<IEnumerable<ProductViewModel>> GetProductsByTypeAsync(string productType);
         Task<ProductViewModel> GetProductByIdAsync(long productId);
         Task CreateProductAsync(ProductViewModel product);
-        // You might add more methods as needed, e.g. Update, Delete, etc.
+        // Add more if needed, e.g. Update, Delete, etc.
     }
 }

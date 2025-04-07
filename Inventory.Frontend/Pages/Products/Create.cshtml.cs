@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
+using Serilog;
 
 namespace Inventory.Frontend.Pages.Products
 {
@@ -29,6 +30,8 @@ namespace Inventory.Frontend.Pages.Products
                 // Return the same page if validation fails
                 return Page();
             }
+
+            Log.Information("User submitted a form to create an Product with data: {@Product}", NewProduct);
 
             await _productService.CreateProductAsync(NewProduct);
 

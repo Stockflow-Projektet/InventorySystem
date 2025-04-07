@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{productId?}"
 @model Inventory.Frontend.Pages.Orders.CreateModel
 @{
     ViewData["Title"] = "Create New Order";
@@ -13,8 +13,20 @@
         <span asp-validation-for="NewOrder.OrderDate" class="text-danger"></span>
     </div>
 
-    <!-- If you have an OrderDetailViewModel, you could add fields for
-         product selection, quantity, etc. But that can get more complex. -->
+    <!-- Example: If there's a single detail pre-filled -->
+    @if (Model.NewOrder.Details.Count > 0)
+    {
+        <h4>Product to Order</h4>
+        <div class="mb-3">
+            <label>Product ID</label>
+            <input asp-for="NewOrder.Details[0].ProductId" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label>Quantity</label>
+            <input asp-for="NewOrder.Details[0].Quantity" class="form-control" />
+        </div>
+        <!-- If you want to allow user to pick Depot, do so here. -->
+    }
 
     <button type="submit" class="btn btn-success">Create</button>
     <a asp-page="Index" class="btn btn-secondary">Cancel</a>
