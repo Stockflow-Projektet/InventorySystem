@@ -1,4 +1,4 @@
-﻿namespace Inventory.Core.Repositories;
+﻿namespace Inventory.Core.RepositoryInterfaces;
 
 public interface IInventoryRepository
 {

@@ -6,16 +6,16 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class OrderFactory : IOrderFactory
 {
-    public IOrder CreateOrder(List<Product> basket);
+    public IOrder CreateOrder(List<Product> cart)
     {
         IOrder order = new Order();
 
         order.OrderDate = DateTime.Now;
-        foreach (Product product in basket)
+        foreach (Product product in cart)
         {
-            product
             var orderItem = new OrderItem();
             orderItem.ProductId = product.GetProductId();
         }
+        return order;
     }
 }

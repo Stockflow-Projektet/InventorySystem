@@ -1,6 +1,6 @@
 ﻿using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.Models.Abstracts;
-using Inventory.Core.Repositories;
+using Inventory.Core.RepositoryInterfaces;
 using Inventory.Core.Services.Interfaces;
 
 namespace Inventory.Core.Services.Implementations;
@@ -37,73 +37,45 @@ public class OrderService : IOrderService
 
         throw new ApplicationException("Product not in basket");
     }
-}
 
-public void PlaceOrder(OrderDto orderDto)
-{
-    if (_basket.Count > 0)
+    public void PlaceOrder(string orderDto)
     {
-        IOrder order = _orderFactory.CreateOrder(_basket);
-        AddOrderAsync(order);
+        if (_basket.Count > 0)
+        {
+            IOrder order = _orderFactory.CreateOrder(_basket);
+            _orderRepository.AddOrderAsync(order);
+        }
+        else
+        {
+            throw new ApplicationException("Basket is empty");
+        }
     }
-    else
+
+    public void GetOrders()
     {
-        throw new ApplicationException("Basket is empty");
+        throw new NotImplementedException();
+    }
+
+
+    public void GetOrderById(int orderId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void QueryOrders(string query)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateOrder(int orderId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DeleteOrder(int orderId)
+    {
+        throw new NotImplementedException();
     }
 }
 
-public void GetOrders()
-{
-    throw new NotImplementedException();
-}
 
-public void GetOrderById(int orderId)
-{
-    throw new NotImplementedException();
-}
-
-public void QueryOrders(string query)
-{
-    throw new NotImplementedException();
-}
-
-public void UpdateOrder(OrderDto orderDto)
-{
-    throw new NotImplementedException();
-}
-
-public void DeleteOrder(int orderId)
-{
-    throw new NotImplementedException();
-}
-
-public void AddProductToBasket(Product product)
-{
-    throw new NotImplementedException();
-}
-
-public void RemoveProductFromBasket(Product product)
-{
-    throw new NotImplementedException();
-}
-
-public void GetOrderById()
-{
-    throw new NotImplementedException();
-}
-
-public void QueryOrders()
-{
-    throw new NotImplementedException();
-}
-
-public void UpdateOrder()
-{
-    throw new NotImplementedException();
-}
-
-public void DeleteOrder()
-{
-    throw new NotImplementedException();
-}
-}

@@ -6,17 +6,19 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class WritingImplementFactory : IProductFactory
 {
-    public Product CreateProduct(ProductDto productDto)
+    public Product CreateProduct(string productDto)
     {
+        throw new NotImplementedException();
+        /*
         // Here constraints on writing tool creation are defined
-        if (string.IsNullOrWhiteSpace(productDto.name)) throw new ArgumentException("Product name is required.");
+        if (string.IsNullOrWhiteSpace(productDto)) throw new ArgumentException("Product name is required.");
 
         if (productDto.price <= 0) throw new ArgumentException("Price must be greater than 0.");
 
         // Create and return the product
         return new Book
         {
-            Type = "Book",
+            Type = "wtl",
             ProductId = 0,
             Name = ProductDto.name,
             Description = ProductDto.description,
@@ -26,5 +28,6 @@ public class WritingImplementFactory : IProductFactory
             Publisher = ProductDto.publisher,
             PublicationYear = ProductDto.publicationYear
         };
+        */
     }
 }

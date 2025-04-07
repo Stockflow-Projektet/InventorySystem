@@ -1,6 +1,6 @@
 ﻿using Inventory.Core.Models.Abstracts;
 
-namespace Inventory.Core.Repositories;
+namespace Inventory.Core.RepositoryInterfaces;
 
 public interface IOrderRepository
 {

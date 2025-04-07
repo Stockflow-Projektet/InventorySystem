@@ -4,11 +4,11 @@ namespace Inventory.Core.Services.Interfaces;
 
 public interface IOrderService
 {
-    void PlaceOrder(OrderDto orderDto);
+    void PlaceOrder(string orderDto);
     void GetOrders();
     void GetOrderById(int orderId);
     void QueryOrders(string query);
-    void UpdateOrder(OrderDto orderDto);
+    void UpdateOrder(int orderId);
     void DeleteOrder(int orderId);
     void AddProductToBasket(Product product);
     void RemoveProductFromBasket(Product product);

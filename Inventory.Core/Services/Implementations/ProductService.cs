@@ -1,6 +1,6 @@
 ﻿using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.Models.Abstracts;
-using Inventory.Core.Repositories;
+using Inventory.Core.RepositoryInterfaces;
 using Inventory.Core.Services.Interfaces;
 
 namespace Inventory.Core.Services.Implementations;
@@ -36,27 +36,13 @@ public class ProductService : IProductService
     {
         return _repository.QueryProductsFromDb(query);
     }
-/*
-    public void UpdateProduct(int id, Product product)
+    public void UpdateProduct(int id)
     {
-        var existingProduct = await _repository.GetByIdAsync(id);
-        if (existingProduct == null) return null; // Or throw an exception
-
-        existingProduct.Name = product.Name;
-        existingProduct.Description = product.Description;
-        existingProduct.Price = product.Price;
-
-        await _repository.UpdateAsync(existingProduct);
-        return existingProduct;
+       throw new NotImplementedException();
     }
 
-    public async Task<bool> DeleteProduct(int id)
+    public void DeleteProduct(int id)
     {
-        var existingProduct = await _repository.GetByIdAsync(id);
-        if (existingProduct == null) return false;
-
-        await _repository.DeleteAsync(id);
-        return true;
+        throw new NotImplementedException();
     }
-    */
 }

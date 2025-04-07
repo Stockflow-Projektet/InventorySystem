@@ -6,10 +6,12 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class PaperFactory : IProductFactory
 {
-    public Product CreateProduct(ProductDto productDto)
+    public Product CreateProduct(string productDto)
     {
+        throw new NotImplementedException();
+        /*
         // Here constraints on paper creation are defined
-        if (string.IsNullOrWhiteSpace(productDto.name)) throw new ArgumentException("Product name is required.");
+        if (string.IsNullOrWhiteSpace(productDto)) throw new ArgumentException("Product name is required.");
 
         if (productDto.price <= 0) throw new ArgumentException("Price must be greater than 0.");
 
@@ -26,5 +28,5 @@ public class PaperFactory : IProductFactory
             Publisher = ProductDto.publisher,
             PublicationYear = ProductDto.publicationYear
         };
-    }
+*/    }
 }
