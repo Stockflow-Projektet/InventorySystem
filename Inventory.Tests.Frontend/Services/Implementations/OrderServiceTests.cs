@@ -2,81 +2,84 @@
 using System.Text.Json;
 using Inventory.Frontend.Services.Implementations;
 using Inventory.Frontend.Views;
-// If you're using the MockHttp library
+using Moq;
+using RichardSzalay.MockHttp;
 
-namespace Inventory.Tests.Frontend.Services.Implementations;
-
-public class OrderServiceTests
+namespace Inventory.Tests.Frontend.Services.Implementations
 {
-    [Fact]
-    public async Task GetOrdersAsync_ReturnsOrdersFromApi()
+    public class OrderServiceTests
     {
-        // Arrange
-        var mockHttp = new MockHttpMessageHandler();
-        var expectedOrders = new List<OrderViewModel>
+        [Fact]
+        public async Task GetOrdersAsync_ReturnsOrdersFromApi()
+        {
+            // Arrange
+            var mockHttp = new MockHttpMessageHandler();
+            var expectedOrders = new List<OrderViewModel>
         {
             new() { OrderId = 100, OrderDate = DateTime.Now },
             new() { OrderId = 101, OrderDate = DateTime.Now }
         };
 
-        mockHttp.When("http://test/api/orders")
-            .Respond("application/json", JsonSerializer.Serialize(expectedOrders));
+            mockHttp.When("http://test/api/orders")
+                .Respond("application/json", JsonSerializer.Serialize(expectedOrders));
 
-        var client = new HttpClient(mockHttp)
+            var client = new HttpClient(mockHttp)
+            {
+                BaseAddress = new Uri("http://test/")
+            };
+            var service = new OrderService(client);
+
+            // Act
+            var result = await service.GetOrdersAsync();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Collection(result,
+                o => Assert.Equal(100, o.OrderId),
+                o => Assert.Equal(101, o.OrderId));
+        }
+
+        [Fact]
+        public async Task GetOrderByIdAsync_ReturnsSpecificOrder()
         {
-            BaseAddress = new Uri("http://test/")
-        };
-        var service = new OrderService(client);
+            // Arrange
+            var mockHttp = new MockHttpMessageHandler();
+            var expectedOrder = new OrderViewModel { OrderId = 123, OrderDate = DateTime.Now };
 
-        // Act
-        var result = await service.GetOrdersAsync();
+            mockHttp.When("http://test/api/orders/123")
+                .Respond("application/json", JsonSerializer.Serialize(expectedOrder));
 
-        // Assert
-        Assert.NotNull(result);
-        Assert.Collection(result,
-            o => Assert.Equal(100, o.OrderId),
-            o => Assert.Equal(101, o.OrderId));
-    }
+            var client = new HttpClient(mockHttp) { BaseAddress = new Uri("http://test/") };
+            var service = new OrderService(client);
 
-    [Fact]
-    public async Task GetOrderByIdAsync_ReturnsSpecificOrder()
-    {
-        // Arrange
-        var mockHttp = new MockHttpMessageHandler();
-        var expectedOrder = new OrderViewModel { OrderId = 123, OrderDate = DateTime.Now };
+            // Act
+            var result = await service.GetOrderByIdAsync(123);
 
-        mockHttp.When("http://test/api/orders/123")
-            .Respond("application/json", JsonSerializer.Serialize(expectedOrder));
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(123, result.OrderId);
+        }
 
-        var client = new HttpClient(mockHttp) { BaseAddress = new Uri("http://test/") };
-        var service = new OrderService(client);
+        [Fact]
+        public async Task CreateOrderAsync_SendsPostRequest()
+        {
+            // Arrange
+            var mockHttp = new MockHttpMessageHandler();
+            mockHttp.When("http://test/api/orders")
+                .Respond(HttpStatusCode.Created);
 
-        // Act
-        var result = await service.GetOrderByIdAsync(123);
+            var client = new HttpClient(mockHttp) { BaseAddress = new Uri("http://test/") };
+            var service = new OrderService(client);
 
-        // Assert
-        Assert.NotNull(result);
-        Assert.Equal(123, result.OrderId);
-    }
+            var newOrder = new OrderViewModel { OrderId = 999, OrderDate = DateTime.Now };
 
-    [Fact]
-    public async Task CreateOrderAsync_SendsPostRequest()
-    {
-        // Arrange
-        var mockHttp = new MockHttpMessageHandler();
-        mockHttp.When("http://test/api/orders")
-            .Respond(HttpStatusCode.Created);
+            // Act
+            await service.CreateOrderAsync(newOrder);
 
-        var client = new HttpClient(mockHttp) { BaseAddress = new Uri("http://test/") };
-        var service = new OrderService(client);
-
-        var newOrder = new OrderViewModel { OrderId = 999, OrderDate = DateTime.Now };
-
-        // Act
-        await service.CreateOrderAsync(newOrder);
-
-        // Assert
-        // The mock handler will throw if the call was never made.
-        // No exception => test passes.
+            // Assert
+            // The mock handler will throw if the call was never made.
+            // No exception => test passes.
+        }
     }
 }
+

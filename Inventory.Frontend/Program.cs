@@ -1,3 +1,4 @@
+using Inventory.Frontend.Services;
 using Inventory.Frontend.Services.Implementations;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Services.MockImplementations;

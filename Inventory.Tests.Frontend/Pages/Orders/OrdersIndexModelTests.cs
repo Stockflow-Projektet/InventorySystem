@@ -1,6 +1,7 @@
 ﻿using Inventory.Frontend.Pages.Orders;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
+using Moq;
 
 namespace Inventory.Tests.Frontend.Pages.Orders;
 

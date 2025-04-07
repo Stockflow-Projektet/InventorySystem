@@ -5,6 +5,7 @@ using Inventory.Core.Services.Implementations;
 using Inventory.Core.Services.Interfaces;
 using Inventory.Logging;
 using Inventory.Core.Database;
+using Serilog;
 
 LoggerConfigurator.ConfigureLogger("API");
 
