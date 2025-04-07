@@ -7,7 +7,7 @@ namespace Inventory.Frontend.Pages
     {
         public void OnGet()
         {
-            // Nothing special needed for the home page
+
         }
     }
 }
