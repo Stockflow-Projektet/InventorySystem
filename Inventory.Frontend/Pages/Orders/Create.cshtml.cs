@@ -1,36 +1,31 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Inventory.Frontend.Pages.Orders
+namespace Inventory.Frontend.Pages.Orders;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
+    private readonly IOrderService _orderService;
+
+    public CreateModel(IOrderService orderService)
     {
-        private readonly IOrderService _orderService;
+        _orderService = orderService;
+    }
 
-        [BindProperty]
-        public OrderViewModel NewOrder { get; set; } = new();
+    [BindProperty] public OrderViewModel NewOrder { get; set; } = new();
 
-        public CreateModel(IOrderService orderService)
-        {
-            _orderService = orderService;
-        }
+    public void OnGet()
+    {
+        // Display empty form by default
+    }
 
-        public void OnGet()
-        {
-            // Display empty form by default
-        }
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid) return Page();
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            await _orderService.CreateOrderAsync(NewOrder);
-            return RedirectToPage("Index");
-        }
+        await _orderService.CreateOrderAsync(NewOrder);
+        return RedirectToPage("Index");
     }
 }

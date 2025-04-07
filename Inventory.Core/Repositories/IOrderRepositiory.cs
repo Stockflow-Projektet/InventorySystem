@@ -4,9 +4,10 @@ namespace Inventory.Core.Repositories;
 
 public interface IOrderRepository
 {
-    void AddOrderAsync(IOrder order);
-    IOrder GetOrderById(string orderId);
-    List<IOrder> GetOrdersAsync();
-    void UpdateOrder(string orderId);
-    void DeleteOrder(string orderId);
+    Task AddOrderAsync(IOrder order);
+    Task<IEnumerable<IOrder>> GetOrdersAsync();
+    Task<IOrder> GetOrderByIdAsync(int orderId);
+    Task<IEnumerable<IOrder>> QueryOrdersAsync(string query);
+    Task UpdateOrderAsync(IOrder order);
+    Task DeleteOrderAsync(int orderId);
 }

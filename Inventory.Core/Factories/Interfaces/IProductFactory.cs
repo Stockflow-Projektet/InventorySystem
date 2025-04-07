@@ -4,5 +4,5 @@ namespace Inventory.Core.Factories.Interfaces;
 
 public interface IProductFactory
 {
-    Product CreateProduct(ProductDto productDto);
+    Product CreateProduct(string productDto);
 }

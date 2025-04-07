@@ -4,13 +4,13 @@ namespace Inventory.Core.Models;
 
 public class Book : Product
 {
-    string Type { get; set; }
-    int ProductId { get; set; }
-    string Name { get; set; }
-    string Description { get; set; }
-    decimal Price { get; set; }
-    int Pages { get; set; }
-    string Author { get; set; }
-    string Publisher { get; set; }
-    int PublicationYear { get; set; }
+    private string Type { get; set; }
+    private int ProductId { get; set; }
+    private string Name { get; set; }
+    private string Description { get; set; }
+    private decimal Price { get; set; }
+    private int Pages { get; set; }
+    private string Author { get; set; }
+    private string Publisher { get; set; }
+    private int PublicationYear { get; set; }
 }

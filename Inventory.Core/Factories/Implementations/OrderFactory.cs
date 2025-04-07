@@ -16,7 +16,6 @@ public class OrderFactory : IOrderFactory
             product
             var orderItem = new OrderItem();
             orderItem.ProductId = product.GetProductId();
-            
         }
     }
 }

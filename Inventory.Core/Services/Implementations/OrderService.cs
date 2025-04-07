@@ -1,19 +1,24 @@
 ﻿using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.Models.Abstracts;
+using Inventory.Core.Repositories;
 using Inventory.Core.Services.Interfaces;
 
 namespace Inventory.Core.Services.Implementations;
 
 public class OrderService : IOrderService
 {
+    private readonly List<Product> _basket;
     private readonly IInventoryService _inventoryService;
     private readonly IOrderFactory _orderFactory;
-    private readonly List<Product> _basket;
+    private readonly IOrderRepository _orderRepository;
 
-    public OrderService(IOrderFactory orderFactory, IInventoryService inventoryService)
+    public OrderService(IOrderFactory orderFactory, IInventoryService inventoryService,
+        IOrderRepository orderRepository)
     {
         _orderFactory = orderFactory;
         _inventoryService = inventoryService;
+        _orderRepository = orderRepository;
+
         _basket = new List<Product>();
     }
 
@@ -29,21 +34,76 @@ public class OrderService : IOrderService
     {
         if (_basket.Remove(product))
             return;
-        
+
         throw new ApplicationException("Product not in basket");
     }
+}
 
-    public void PlaceOrder()
+public void PlaceOrder(OrderDto orderDto)
+{
+    if (_basket.Count > 0)
     {
-        if (_basket.Count > 0)
-        {
-            IOrder order = _orderFactory.CreateOrder(_basket);
-            SaveOrder(order);
-            foreach (Orderitem item in order.)
-        }
-        else
-        {
-            throw new ApplicationException("Basket is empty");
-        }
+        IOrder order = _orderFactory.CreateOrder(_basket);
+        AddOrderAsync(order);
     }
+    else
+    {
+        throw new ApplicationException("Basket is empty");
+    }
+}
+
+public void GetOrders()
+{
+    throw new NotImplementedException();
+}
+
+public void GetOrderById(int orderId)
+{
+    throw new NotImplementedException();
+}
+
+public void QueryOrders(string query)
+{
+    throw new NotImplementedException();
+}
+
+public void UpdateOrder(OrderDto orderDto)
+{
+    throw new NotImplementedException();
+}
+
+public void DeleteOrder(int orderId)
+{
+    throw new NotImplementedException();
+}
+
+public void AddProductToBasket(Product product)
+{
+    throw new NotImplementedException();
+}
+
+public void RemoveProductFromBasket(Product product)
+{
+    throw new NotImplementedException();
+}
+
+public void GetOrderById()
+{
+    throw new NotImplementedException();
+}
+
+public void QueryOrders()
+{
+    throw new NotImplementedException();
+}
+
+public void UpdateOrder()
+{
+    throw new NotImplementedException();
+}
+
+public void DeleteOrder()
+{
+    throw new NotImplementedException();
+}
 }

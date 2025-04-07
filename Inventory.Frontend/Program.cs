@@ -1,11 +1,6 @@
-using Inventory.Frontend.Services.Interfaces;
-using Inventory.Frontend.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Inventory.Frontend.Services.Implementations;
+using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Services.MockImplementations;
-using Serilog;
 using Inventory.Logging;
 
 LoggerConfigurator.ConfigureLogger("Frontend");
@@ -13,8 +8,8 @@ LoggerConfigurator.ConfigureLogger("Frontend");
 var builder = WebApplication.CreateBuilder(args);
 
 // Read config for UseMockServices
-bool useMock = builder.Configuration.GetValue<bool>("UseMockServices");
-string apiBaseUrl = builder.Configuration.GetValue<string>("ApiBaseUrl");
+var useMock = builder.Configuration.GetValue<bool>("UseMockServices");
+var apiBaseUrl = builder.Configuration.GetValue<string>("ApiBaseUrl");
 
 
 // Register services conditionally
@@ -39,7 +34,6 @@ else
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
 
 
 var app = builder.Build();

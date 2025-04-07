@@ -7,8 +7,8 @@ namespace Inventory.Core.Services.Implementations;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _repository;
     private readonly IProductFactory _productFactory;
+    private readonly IProductRepository _repository;
 
     public ProductService(IProductRepository repository, IProductFactory productFactory)
     {
@@ -16,29 +16,28 @@ public class ProductService : IProductService
         _productFactory = productFactory;
     }
 
-    public async Task<IEnumerable<Product>> GetProductsAsync()
+    public void AddProduct(string productDto)
     {
-        return await _repository.GetAllAsync();
+        var product = _productFactory.CreateProduct(productDto);
+        _repository.AddProductToDb(product);
     }
 
-    public async Task<Product> GetProductByIdAsync(int productId)
+    public List<Product> GetProducts()
     {
-        return await _repository.GetByIdAsync(productId);
+        return _repository.GetAllProductsFromDb();
     }
 
-    public async Task<IEnumerable<Product>> QueryProductsAsync(string query)
+    public Product GetProductById(int productId)
     {
-        return await _repository.QueryAsync(query);
+        return _repository.GetProductByIdFromDb(productId);
     }
 
-    public async Task<Product> AddProductAsync(string productType)
+    public List<Product> QueryProducts(string query)
     {
-        Product product = _productFactory.CreateProduct();
-        await _repository.AddAsync(product);
-        return product;
+        return _repository.QueryProductsFromDb(query);
     }
-
-    public async Task<Product> UpdateProductAsync(int id, Product product)
+/*
+    public void UpdateProduct(int id, Product product)
     {
         var existingProduct = await _repository.GetByIdAsync(id);
         if (existingProduct == null) return null; // Or throw an exception
@@ -51,7 +50,7 @@ public class ProductService : IProductService
         return existingProduct;
     }
 
-    public async Task<bool> DeleteProductAsync(int id)
+    public async Task<bool> DeleteProduct(int id)
     {
         var existingProduct = await _repository.GetByIdAsync(id);
         if (existingProduct == null) return false;
@@ -59,4 +58,5 @@ public class ProductService : IProductService
         await _repository.DeleteAsync(id);
         return true;
     }
+    */
 }

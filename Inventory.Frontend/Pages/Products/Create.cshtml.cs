@@ -1,38 +1,34 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Inventory.Frontend.Pages.Products
+namespace Inventory.Frontend.Pages.Products;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
+    private readonly IProductService _productService;
+
+    public CreateModel(IProductService productService)
     {
-        private readonly IProductService _productService;
+        _productService = productService;
+    }
 
-        [BindProperty]
-        public ProductViewModel NewProduct { get; set; } = new();
+    [BindProperty] public ProductViewModel NewProduct { get; set; } = new();
 
-        public CreateModel(IProductService productService)
-        {
-            _productService = productService;
-        }
+    public void OnGet()
+    {
+        // Just show the empty form
+    }
 
-        public void OnGet()
-        {
-            // Just show the empty form
-        }
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+            // Return the same page if validation fails
+            return Page();
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                // Return the same page if validation fails
-                return Page();
-            }
+        await _productService.CreateProductAsync(NewProduct);
 
-            await _productService.CreateProductAsync(NewProduct);
-
-            return RedirectToPage("Index");
-        }
+        return RedirectToPage("Index");
     }
 }

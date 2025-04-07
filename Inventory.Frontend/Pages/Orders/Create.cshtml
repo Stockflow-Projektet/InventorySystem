@@ -1,5 +1,6 @@
 ﻿@page
-@model Inventory.Frontend.Pages.Orders.CreateModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model CreateModel
 @{
     ViewData["Title"] = "Create New Order";
 }
@@ -9,7 +10,7 @@
 <form method="post">
     <div class="mb-3">
         <label asp-for="NewOrder.OrderDate" class="form-label">Order Date</label>
-        <input asp-for="NewOrder.OrderDate" class="form-control" type="date" />
+        <input asp-for="NewOrder.OrderDate" class="form-control" type="date"/>
         <span asp-validation-for="NewOrder.OrderDate" class="text-danger"></span>
     </div>
 

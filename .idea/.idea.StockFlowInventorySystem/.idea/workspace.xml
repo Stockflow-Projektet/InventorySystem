@@ -13,44 +13,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aabb8751-a111-418e-aa25-52a003ff2183" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/BookFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/OrderFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IOrderFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IProductFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Abstracts/IOrder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Abstracts/IOrderItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Abstracts/Product.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/Order.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Models/OrderItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Repositories/IInventoryRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/InventoryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/OrderService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IInventoryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IOrderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.API/DTO's/OrderDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.API/DTO's/ProductDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.API/Endpoints/ApiEndpoints.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.API/RepositoryImplementations/OrderRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory.API/RepositoryImplementations/ProductRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/BookFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/IOrderFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/IProductFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/PaperFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/PaperFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/WritingImplementFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/WritingImplementFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/IOrderService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Inventory.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Controllers/WeatherForecastController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.API/WeatherForecast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.API/WeatherForecast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/BookFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/BookFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/OrderFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/OrderFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/PaperFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/PaperFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/WritingImplementFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/WritingImplementFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IOrderFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IOrderFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IProductFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IProductFactory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/IOrder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/OrderDetail.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/Paper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/Paper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/Product.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/ProductType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Models/WritingTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Models/WritingTool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/OrderService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Core/Repositories/IOrderRepositiory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Repositories/IOrderRepositiory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Core/Repositories/IProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Repositories/IProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/OrderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IOrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IOrderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Inventory.Frontend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Inventory.Frontend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Error.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Error.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Error.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Error.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Index.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Create.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Create.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Orders/Index.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Privacy.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Privacy.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Privacy.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Privacy.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Create.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Create.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Create.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Create.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Index.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Products/Index.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Pages/Shared/_Layout.cshtml.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Pages/Shared/_Layout.cshtml.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/Implementations/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/Implementations/OrderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/Implementations/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/Implementations/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/Interfaces/IOrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/Interfaces/IOrderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/Interfaces/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/Interfaces/IProductService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/OrderMockService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/OrderMockService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/ProductMockService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Services/MockImplementations/ProductMockService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Views/OrderDetailViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Views/OrderDetailViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Views/OrderViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Views/OrderViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/Views/ProductViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/Views/ProductViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery-validation/dist/additional-methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery-validation/dist/additional-methods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery-validation/dist/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery-validation/dist/jquery.validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery/dist/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Frontend/wwwroot/lib/jquery/dist/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Logging/Inventory.Logging.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Logging/Inventory.Logging.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Logging/LoggerConfigurator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Logging/LoggerConfigurator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.API/Inventory.Tests.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.API/Inventory.Tests.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.API/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.API/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Core/Inventory.Tests.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Core/Inventory.Tests.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Core/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Core/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Inventory.Tests.Frontend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Inventory.Tests.Frontend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Pages/Orders/OrdersIndexModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Pages/Orders/OrdersIndexModelTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Pages/Products/ProductsIndexModelTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Pages/Products/ProductsIndexModelTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Implementations/OrderServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Implementations/OrderServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Implementations/ProductServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Implementations/ProductServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/OrderMockServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/OrderMockServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/ProductMockServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Tests.Frontend/Services/Mocks/ProductMockServiceTests.cs" afterDir="false" />
     </list>
@@ -80,11 +119,31 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Inventory.Core/Models/IOrderItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.API/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Inventory.Core/Models/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -95,21 +154,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "CoreLogic",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Inventory.API: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CoreLogic&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SolutionBuilderGeneralOptionsPage&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Inventory.API: IIS Express">
     <configuration name="Inventory.API: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Inventory.API/Inventory.API.csproj" />
@@ -216,7 +276,10 @@
       <workItem from="1743955069356" duration="33000" />
       <workItem from="1743955534917" duration="711000" />
       <workItem from="1743956342196" duration="9013000" />
-      <workItem from="1743965443360" duration="4358000" />
+      <workItem from="1743965443360" duration="18330000" />
+      <workItem from="1743983934786" duration="1056000" />
+      <workItem from="1743985504635" duration="1267000" />
+      <workItem from="1743986865142" duration="262000" />
     </task>
     <servers />
   </component>
@@ -235,7 +298,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="CoreLogicSkeleton" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
