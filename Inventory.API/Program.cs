@@ -1,6 +1,6 @@
 using Inventory.API.RepositoryImplementations;
 using Inventory.Core.Factories.Interfaces;
-using Inventory.Core.Repositories;
+using Inventory.Core.RepositoryInterfaces;
 using Inventory.Core.Services.Implementations;
 using Inventory.Core.Services.Interfaces;
 using Inventory.Logging;
@@ -9,27 +9,20 @@ LoggerConfigurator.ConfigureLogger("API");
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("Products") ?? "Data Source=Products.db";
+//var connectionString = builder.Configuration.GetConnectionString("Products") ?? "Data Source=Products.db";
 var configuration = builder.Configuration;
-var jwtSettings = configuration.GetSection("Jwt");
 
 // Add services to the container.
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Product API",
-        Description = "Product database",
-        Version = "v1"
-    });
-};
+
+//builder.Services.AddDbContext<AppDbContext>(options =>
+    //options.UseSqlServer(connectionString)); // or other database
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductFactory>();
 builder.Services.AddScoped<IOrderFactory>();
 

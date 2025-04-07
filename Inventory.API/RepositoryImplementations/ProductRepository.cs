@@ -1,8 +1,7 @@
 ﻿using Inventory.Core.Models.Abstracts;
-using Inventory.Core.Repositories;
 
 namespace Inventory.API.RepositoryImplementations;
-
+/*
 public class ProductRepository : IProductRepository
 {
     private readonly AppDbContext _context;
@@ -51,3 +50,4 @@ public class ProductRepository : IProductRepository
         }
     }
 }
+*/
