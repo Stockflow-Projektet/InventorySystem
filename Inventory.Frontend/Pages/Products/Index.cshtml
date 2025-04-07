@@ -1,37 +1,157 @@
-﻿@page
-@using Microsoft.AspNetCore.Mvc.TagHelpers
-@model IndexModel
-
+@page
+@model Inventory.Frontend.Pages.Products.IndexModel
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Product List";
 }
-
-<h2>Product List</h2>
-
-<table class="table table-bordered table-striped table-hover">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Manufacturer</th>
-        <th>Price</th>
-        <th>Amount</th>
-    </tr>
-    </thead>
-    <tbody>
+ 
+<h2>Product Catalog</h2>
+ 
+<!-- Optional filter links -->
+<div class="mb-3">
+<a class="btn btn-outline-primary" href="?">All</a>
+<a class="btn btn-outline-primary" href="?productType=PAP">Paper</a>
+<a class="btn btn-outline-primary" href="?productType=WRI">Writing Implements</a>
+<a class="btn btn-outline-primary" href="?productType=BOOK">Books</a>
+</div>
+ 
+<div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var product in Model.Products)
     {
-        <tr>
-            <td>@product.ProductId</td>
-            <td>@product.Type</td>
-            <td>@product.Name</td>
-            <td>@product.Manufacturer</td>
-            <td>@product.Price</td>
-            <td>@product.Amount</td>
-        </tr>
-    }
-    </tbody>
+<div class="col">
+<div class="card h-100">
+<!-- Card body -->
+<div class="card-body">
+<!-- Show Type in small gray text aligned right -->
+<div class="text-end text-muted">
+                        @product.Type
+</div>
+<!-- Product name as clickable link to open modal -->
+<h4>
+<a href="javascript:void(0);"
+                           data-bs-toggle="modal"
+                           data-bs-target="#productModal-@product.ProductId">
+                            @product.Name
+</a>
+</h4>
+ 
+                    <p class="card-text">@product.Description</p>
+ 
+                    <p class="card-text fw-bold">Price: @product.Price</p>
+<p class="card-text">Amount in stock: @product.Amount</p>
+</div>
+</div>
+ 
+            <!-- Modal for this product -->
+<div class="modal fade" id="productModal-@product.ProductId" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<!-- Modal header -->
+<div class="modal-header">
+<div class="text-end text-muted" style="width:100%;">
+<!-- Product Type top-right in small text -->
+                                @product.Type
+</div>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+ 
+                        <!-- Modal body -->
+<div class="modal-body">
+<h3>@product.Name</h3>
+<hr />
+ 
+                            <!-- Show relevant fields in a 2-column table -->
+<table class="table">
+<tbody>
+                                    @if (product.Type == "BOOK")
+                                    {
+<tr>
+<th>Author</th>
+<td>@(product.Author ?? "N/A")</td>
+</tr>
+<tr>
+<th>Publisher</th>
+<td>@(product.Publisher ?? "N/A")</td>
+</tr>
+<tr>
+<th>ISBN</th>
+<td>@(product.ISBN ?? "N/A")</td>
+</tr>
+<tr>
+<th>Year</th>
+<td>@(product.PublicationYear?.ToString() ?? "N/A")</td>
+</tr>
+<tr>
+<th>Pages</th>
+<td>@(product.NumberOfPages?.ToString() ?? "N/A")</td>
+</tr>
+                                    }
+                                    else if (product.Type == "WRI")
+                                    {
+<tr>
+<th>Ink Color</th>
+<td>@(product.InkColor ?? "N/A")</td>
+</tr>
+<tr>
+<th>Ink Type</th>
+<td>@(product.InkType ?? "N/A")</td>
+</tr>
+<tr>
+<th>Tip Size</th>
+<td>@(product.TipSize?.ToString() ?? "N/A")</td>
+</tr>
+<tr>
+<th>Lead Hardness</th>
+<td>@(product.PencilLeadHardness ?? "N/A")</td>
+</tr>
+<tr>
+<th>Is Erasable</th>
+<td>@(product.IsErasable?.ToString() ?? "No")</td>
+</tr>
+                                    }
+                                    else if (product.Type == "PAP")
+                                    {
+<tr>
+<th>Paper Size</th>
+<td>@(product.PaperSize ?? "N/A")</td>
+</tr>
+<tr>
+<th>Paper Weight</th>
+<td>@(product.PaperWeight?.ToString() ?? "N/A")</td>
+</tr>
+<tr>
+<th>Paper Color</th>
+<td>@(product.PaperColor ?? "N/A")</td>
+</tr>
+<tr>
+<th>Coating</th>
+<td>@(product.CoatingType ?? "N/A")</td>
+</tr>
+                                    }
+<!-- Common fields or do nothing if none. -->
+</tbody>
 </table>
-
-<a class="btn btn-primary" asp-page="Create">Create New Product</a>
+</div>
+ 
+                        <!-- Modal footer -->
+<div class="modal-footer">
+<!-- Order button => pass productId to Orders/Create -->
+<a class="btn btn-success"
+                               href="/Orders/Create?productId=@product.ProductId">
+                                Order
+</a>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+    }
+</div>
+ 
+<a class="btn btn-primary mt-4" asp-page="Create">Create New Product</a>
+ 
+<!--
+    Make sure you have the proper bootstrap JS loaded, e.g.,
+    in your _Layout.cshtml or equivalent:
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+-->
