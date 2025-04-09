@@ -23,7 +23,7 @@ public class BookFactory : IProductFactory
             Name = productCreationArgs.Name,
             Description = productCreationArgs.Description,
             Price = productCreationArgs.Price,
-            Pages = productCreationArgs.Pages,
+            NumberOfPages = productCreationArgs.Pages,
             Author = productCreationArgs.Author,
             Publisher = productCreationArgs.Publisher,
             PublicationYear = productCreationArgs.PublicationYear
@@ -51,7 +51,7 @@ public class BookFactory : IProductFactory
         existingBook.Description = !string.IsNullOrWhiteSpace(updatedProductData.Description) ? updatedProductData.Description : existingBook.Description;
 
         existingBook.Price = updatedProductData.Price > 0 ? updatedProductData.Price : existingBook.Price;
-        existingBook.Pages = updatedProductData.Pages;
+        existingBook.NumberOfPages = updatedProductData.Pages;
         existingBook.Author = !string.IsNullOrWhiteSpace(updatedProductData.Author) ? updatedProductData.Author : existingBook.Author;
         existingBook.Publisher = !string.IsNullOrWhiteSpace(updatedProductData.Publisher) ? updatedProductData.Publisher : existingBook.Publisher;
         existingBook.PublicationYear = updatedProductData.PublicationYear;

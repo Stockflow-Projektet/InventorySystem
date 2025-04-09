@@ -15,7 +15,7 @@ public class WritingToolFactory : IProductFactory
         if (productCreationArgs.Price <= 0) throw new ArgumentException("Price must be greater than 0.");
 
         // Create and return the product
-        return new WritingTool()
+        return new WritingImplements()
         {
             Type = "wri",
             ProductId = 0,

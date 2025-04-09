@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.Common;
 using Serilog;
 
 namespace Inventory.Core.Database
@@ -57,16 +58,13 @@ namespace Inventory.Core.Database
                 if (string.IsNullOrWhiteSpace(_externalConnectionString))
                 {
                     Log.Fatal("DatabaseConnection accessed before calling Initialize().");
-                    throw new InvalidOperationException(
-                        "DatabaseConnection.Initialize(...) must be called first."
-                    );
+                    throw new InvalidOperationException("DatabaseConnection.Initialize(...) must be called first.");
                 }
 
                 // If not yet created, create it now
                 if (_instance == null)
                 {
-                    _instance = new Lazy<DatabaseConnection>(
-                        () => new DatabaseConnection(_factory));
+                    _instance = new Lazy<DatabaseConnection>(() => new DatabaseConnection(_factory));
                 }
 
                 return _instance.Value;
@@ -74,14 +72,14 @@ namespace Inventory.Core.Database
         }
 
         /// <summary>
-        /// Creates and returns a new <see cref="IDbConnection"/> using
+        /// Creates and returns a new <see cref="DbConnection"/> using
         /// the externally provided connection string and the configured factory.
         /// </summary>
         public IDbConnection CreateSqlConnection()
         {
             try
             {
-                Log.Debug("Creating a new IDbConnection via the factory.");
+                Log.Debug("Creating a new DbConnection via the factory.");
                 return _connFactory.CreateConnection(_externalConnectionString);
             }
             catch (Exception ex)

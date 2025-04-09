@@ -13,7 +13,7 @@ public class OrderFactory : IOrderFactory
         order.OrderDate = DateTime.Now;
         foreach (Product product in cart)
         {
-            var orderItem = new OrderItem();
+            var orderItem = new OrderDetail();
             orderItem.ProductId = product.GetProductId();
         }
         return order;

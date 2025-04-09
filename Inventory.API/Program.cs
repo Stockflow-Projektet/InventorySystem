@@ -1,4 +1,3 @@
-using Inventory.API.RepositoryImplementations;
 using Inventory.Core;
 using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.RepositoryInterfaces;

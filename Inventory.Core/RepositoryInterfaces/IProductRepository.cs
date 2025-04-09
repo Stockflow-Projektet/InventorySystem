@@ -1,13 +1,25 @@
 ﻿using Inventory.Core.Models.Abstracts;
 
-namespace Inventory.Core.RepositoryInterfaces;
-
-public interface IProductRepository
+namespace Inventory.Core.RepositoryInterfaces
 {
-    Task AddProductToDb(Product product);
-    Task<IEnumerable<Product>> GetAllProductsFromDb();
-    Task<Product> GetProductByIdFromDb(int id);
-    Task<IEnumerable<Product>> QueryProductsFromDb(string query);
-    Task UpdateAsync(Product product);
-    Task DeleteAsync(int id);
+    public interface IProductRepository
+    {
+        // Original methods that your service layer calls:
+        Task AddProductToDb(Product product);
+        Task<IEnumerable<Product>> GetAllProductsFromDb();
+        Task<Product> GetProductByIdFromDb(int id);
+        Task<IEnumerable<Product>> QueryProductsFromDb(string query);
+        Task UpdateAsync(Product product);
+        Task DeleteAsync(int id);
+    }
 }
+
+//public interface IProductRepository
+//{
+//    Task AddProductToDb(Product product);
+//    Task<IEnumerable<Product>> GetAllProductsFromDb();
+//    Task<Product> GetProductByIdFromDb(int id);
+//    Task<IEnumerable<Product>> QueryProductsFromDb(string query);
+//    Task UpdateAsync(Product product);
+//    Task DeleteAsync(int id);
+//}
