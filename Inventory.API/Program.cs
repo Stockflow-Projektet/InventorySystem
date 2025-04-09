@@ -11,7 +11,6 @@ LoggerConfigurator.ConfigureLogger("API");
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var connectionString = builder.Configuration.GetConnectionString("Products") ?? "Data Source=Products.db";
 var configuration = builder.Configuration;
 
 // Add services to the container.
@@ -37,16 +36,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 
-//builder.Services.AddDbContext<AppDbContext>(options =>
-    //options.UseSqlServer(connectionString)); // or other database
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 //builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductFactory>();
-builder.Services.AddScoped<IOrderFactory>();
-
+builder.Services.AddSingleton<IProductFactoryResolverService, ProductFactoryResolverService>();
 
 var app = builder.Build();
 

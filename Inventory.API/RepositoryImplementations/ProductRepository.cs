@@ -1,20 +1,23 @@
-﻿using Inventory.Core.Models.Abstracts;
+﻿using Inventory.Core.Database;
+using Inventory.Core.Models.Abstracts;
+using Inventory.Core.RepositoryInterfaces;
 
 namespace Inventory.API.RepositoryImplementations;
 /*
 public class ProductRepository : IProductRepository
 {
-    private readonly AppDbContext _context;
+    private readonly DatabaseConnection _connection;
 
-    public ProductRepository(AppDbContext context)
+    public ProductRepository(DatabaseConnection connection)
     {
-        _context = context;
+        _connection = connection ?? throw new ArgumentNullException(nameof(connection))
+            ;
     }
 
     public void AddProductToDb(Product product)
     {
-        _context.Products.Add(product);
-        _context.SaveChanges();
+        _connection.Products.Add(product);
+        _connection.SaveChanges();
     }
 
     public List<Product> GetAllProductsFromDb()

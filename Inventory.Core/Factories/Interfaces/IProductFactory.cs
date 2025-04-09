@@ -4,5 +4,6 @@ namespace Inventory.Core.Factories.Interfaces;
 
 public interface IProductFactory
 {
-    Product CreateProduct(string productDto);
+    string FactoryType { get; } // Get the factory type for resolving factory selection,
+    Product CreateProduct(ProductCreationArgs args);
 }

@@ -4,27 +4,27 @@ using Inventory.Core.Models.Abstracts;
 
 namespace Inventory.Core.Factories.Implementations;
 
-public class PaperFactory : IProductFactory
+public class WritingToolFactory : IProductFactory
 {
-    public string FactoryType => "pap";
+    public string FactoryType => "wri";
     public Product CreateProduct(ProductCreationArgs productCreationArgs)
     {
-        // Here constraints on paper creation are defined
+        // Here constraints on writing tool creation are defined
         if (string.IsNullOrWhiteSpace(productCreationArgs.Name)) throw new ArgumentException("Product name is required.");
 
         if (productCreationArgs.Price <= 0) throw new ArgumentException("Price must be greater than 0.");
 
         // Create and return the product
-        return new Paper()
+        return new WritingTool()
         {
-            Type = "pap",
+            Type = "wri",
             ProductId = 0,
             Name = productCreationArgs.Name,
             Description = productCreationArgs.Description,
             Price = productCreationArgs.Price,
-            PaperSize = productCreationArgs.PaperSize,
-            PaperWeight = productCreationArgs.PaperWeight,
-            CoatingType = productCreationArgs.CoatingType
+            InkColor = productCreationArgs.InkColor,
+            InkType = productCreationArgs.InkType,
+            TipSize = productCreationArgs.TipSize
         };
-  }
+    }
 }

@@ -7,41 +7,47 @@ namespace Inventory.Core.Services.Implementations;
 
 public class ProductService : IProductService
 {
-    private readonly IProductFactory _productFactory;
+    private readonly IProductFactoryResolverService _productFactoryResolverService;
     private readonly IProductRepository _repository;
 
-    public ProductService(IProductRepository repository, IProductFactory productFactory)
+    public ProductService(IProductRepository repository, IProductFactoryResolverService productFactoryResolverService)
     {
         _repository = repository;
-        _productFactory = productFactory;
+        _productFactoryResolverService = productFactoryResolverService;
     }
 
-    public void AddProduct(string productDto)
+    public async Task AddProduct(ProductCreationArgs productCreationArgs)
     {
-        var product = _productFactory.CreateProduct(productDto);
-        _repository.AddProductToDb(product);
+        var productFactory = _productFactoryResolverService.GetFactory(productCreationArgs.Type);
+        if (productFactory == null)
+        {
+            throw new Exception($"No factory found for product type: {productCreationArgs.Type}");
+        }
+
+        var product = productFactory.CreateProduct(productCreationArgs);
+       await _repository.AddProductToDb(product);
     }
 
-    public List<Product> GetProducts()
+    public async Task<IEnumerable<Product>> GetProducts()
     {
-        return _repository.GetAllProductsFromDb();
+        return await _repository.GetAllProductsFromDb();
     }
 
-    public Product GetProductById(int productId)
+    public async Task<Product> GetProductById(int productId)
     {
-        return _repository.GetProductByIdFromDb(productId);
+        return await _repository.GetProductByIdFromDb(productId);
     }
 
-    public List<Product> QueryProducts(string query)
+    public async Task<IEnumerable<Product>> QueryProducts(string query)
     {
-        return _repository.QueryProductsFromDb(query);
+        return await _repository.QueryProductsFromDb(query);
     }
-    public void UpdateProduct(int id)
+    public async Task UpdateProduct(int id)
     {
        throw new NotImplementedException();
     }
 
-    public void DeleteProduct(int id)
+    public async Task DeleteProduct(int id)
     {
         throw new NotImplementedException();
     }
