@@ -29,4 +29,34 @@ public class BookFactory : IProductFactory
             PublicationYear = productCreationArgs.PublicationYear
         };
     }
+    
+    public Product UpdateProduct(Product existingProduct, ProductCreationArgs updatedProductData)
+    {
+        if (existingProduct == null)
+        {
+            throw new ArgumentNullException(nameof(existingProduct), "Existing product cannot be null.");
+        }
+
+        if (updatedProductData == null)
+        {
+            throw new ArgumentNullException(nameof(updatedProductData), "Updated product data cannot be null.");
+        }
+        
+        var existingBook = (Book)existingProduct;
+        
+        // Apply updates from the new data to the existing product
+        existingBook.Type = "boo";
+        existingBook.Name = !string.IsNullOrWhiteSpace(updatedProductData.Name) ? updatedProductData.Name : existingBook.Name;
+
+        existingBook.Description = !string.IsNullOrWhiteSpace(updatedProductData.Description) ? updatedProductData.Description : existingBook.Description;
+
+        existingBook.Price = updatedProductData.Price > 0 ? updatedProductData.Price : existingBook.Price;
+        existingBook.Pages = updatedProductData.Pages;
+        existingBook.Author = !string.IsNullOrWhiteSpace(updatedProductData.Author) ? updatedProductData.Author : existingBook.Author;
+        existingBook.Publisher = !string.IsNullOrWhiteSpace(updatedProductData.Publisher) ? updatedProductData.Publisher : existingBook.Publisher;
+        existingBook.PublicationYear = updatedProductData.PublicationYear;
+
+        // Return updated product
+        return existingProduct;
+    }
 }

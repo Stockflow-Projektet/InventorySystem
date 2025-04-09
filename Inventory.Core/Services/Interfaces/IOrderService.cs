@@ -5,7 +5,7 @@ namespace Inventory.Core.Services.Interfaces;
 
 public interface IOrderService
 {
-    Task PlaceOrder(OrderCreationArgs orderCreationArgs);
+    Task PlaceOrder(int id);
     Task<IEnumerable<Order>> GetOrders();
     Task<Order> GetOrderById(int orderId);
     Task<IEnumerable<Order>> QueryOrders(string query);

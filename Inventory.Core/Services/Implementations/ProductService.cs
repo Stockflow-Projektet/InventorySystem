@@ -42,13 +42,26 @@ public class ProductService : IProductService
     {
         return await _repository.QueryProductsFromDb(query);
     }
-    public async Task UpdateProduct(int id)
+    public async Task UpdateProduct(int id, ProductCreationArgs productCreationArgs)
     {
-       throw new NotImplementedException();
+        Product existingProduct = await _repository.GetProductByIdFromDb(id);
+        if (existingProduct.Type != productCreationArgs.Type)
+        {
+            throw new Exception("Cannot change product type");
+        }
+        
+        var productFactory = _productFactoryResolverService.GetFactory(productCreationArgs.Type);
+        if (productFactory == null)
+        {
+            throw new Exception($"No factory found for product type: {productCreationArgs.Type}");
+        }
+
+        var product = productFactory.UpdateProduct(existingProduct, productCreationArgs);
+        await _repository.UpdateAsync(product);
     }
 
     public async Task DeleteProduct(int id)
     {
-        throw new NotImplementedException();
+        await _repository.DeleteAsync(id);
     }
 }
