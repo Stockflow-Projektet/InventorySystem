@@ -1,70 +1,128 @@
 using Inventory.Core;
-using Inventory.Core.Factories.Interfaces;
-using Inventory.Core.RepositoryInterfaces;
-using Inventory.Core.Services.Implementations;
-using Inventory.Core.Services.Interfaces;
-using Inventory.Logging;
 using Inventory.Core.Database;
+using Inventory.Core.Factories.Interfaces;
+using Inventory.Core.Factories.Implementations;
+using Inventory.Core.RepositoryInterfaces;
+using Inventory.Core.Repositories;
+using Inventory.Core.RepositoriesImplementations;
+using Inventory.Core.Services.Interfaces;
+using Inventory.Core.Services.Implementations;
+using Inventory.Logging;  // <-- your custom logging
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-LoggerConfigurator.ConfigureLogger("API");
+LoggerConfigurator.ConfigureLogger("Inventory.API");
 
 var builder = WebApplication.CreateBuilder(args);
 
-var configuration = builder.Configuration;
-
-// Add services to the container.
-
-
-// Configure Serilog logging right away
+// 1) Configure Serilog logging
 LoggerConfigurator.ConfigureLogger("Inventory.API");
 
-// Get your connection string from appsettings.json
+// 2) Check for the connection string in appsettings.json
 string? connectionString = builder.Configuration.GetConnectionString("InventoryLocalConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
-    // If not found or empty, log a fatal error (Serilog is configured!)
     Log.Fatal("No connection string 'InventoryLocalConnection' found in appsettings.");
     throw new InvalidOperationException("Cannot start API without a valid connection string.");
 }
 
-// Initialize the singleton so Inventory.Core can create DB connections
+// 3) Initialize the DB connection (Singleton)
 DatabaseConnection.Initialize(connectionString);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// 4) Register your Repositories
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IInventoryRepository, InventoryRepository>();
+builder.Services.AddScoped<IDepotRepository, DepotRepository>();
+builder.Services.AddScoped<ITransferRepository, TransferRepository>();
 
-builder.Services.AddEndpointsApiExplorer();
+// 5) Register your Factories
+builder.Services.AddSingleton<IProductFactoryResolverService, ProductFactoryResolverService>();
+builder.Services.AddSingleton<IOrderFactory, OrderFactory>();
 
-
+// 6) Register your Services
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-//builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-//builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddSingleton<IProductFactoryResolverService, ProductFactoryResolverService>();
+// The InventoryService code below will need to be properly implemented
+// to call _inventoryRepo.GetTotalQuantityForProductAsync(...) etc.
+builder.Services.AddScoped<IInventoryService, InventoryService>();
+
+// 7) Add minimal API + controllers (if any)
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// 8) Middleware pipeline
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
-//app.MapControllers();
-// Map product endpoints
-app.MapPost("/product", (IProductService productService, [FromBody] ProductCreationArgs productCreationArgs) => productService.AddProduct(productCreationArgs)).RequireAuthorization();
-app.MapGet("/products", (IProductService productService) => productService.GetProducts());
-app.MapGet("/product/{id}", (IProductService productService, int id) => productService.GetProductById(id));
-app.MapGet("/product/search/{query}", (IProductService productService, string query) => productService.QueryProducts(query));
-app.MapPut("/product/{id}", (IProductService productService, int id, [FromBody] ProductCreationArgs productCreationArgs) => productService.UpdateProduct(id, productCreationArgs)).RequireAuthorization();
-app.MapDelete("/product/{id}", (IProductService productService, int id) => productService.DeleteProduct(id)).RequireAuthorization();
+// If you have controllers, you can do:
+// app.MapControllers();
 
-// Map order endpoints
-app.MapPost("/order", (IOrderService orderService, int orderDetail) => orderService.PlaceOrder(orderDetail)).RequireAuthorization();
-app.MapGet("/orders", (IOrderService orderService) => orderService.GetOrders());
-app.MapGet("/order/{orderid}", (IOrderService orderService, int orderId) => orderService.GetOrderById(orderId));
-app.MapGet("/order/search/{query}", (IOrderService orderService, string query) => orderService.QueryOrders(query));
-app.MapPut("/order/{orderid}", (IOrderService orderService, int orderId) => orderService.UpdateOrder(orderId)).RequireAuthorization();
-app.MapDelete("/order/{orderid}", (IOrderService orderService, int orderId) => orderService.DeleteOrder(orderId)).RequireAuthorization();
+// Otherwise, or in addition, define minimal API routes:
+
+// ----- Products -----
+app.MapGet("/api/products", async (IProductService productService) =>
+    await productService.GetProducts()
+);
+
+app.MapGet("/api/products/{id}", async (IProductService productService, int id) =>
+    await productService.GetProductById(id)
+);
+
+app.MapGet("/api/products/search/{query}", async (IProductService productService, string query) =>
+    await productService.QueryProducts(query)
+);
+
+app.MapPost("/api/products", async ([FromBody] ProductCreationArgs args, IProductService productService) =>
+{
+    await productService.AddProduct(args);
+    return Results.Created("/api/products", args);
+});
+
+app.MapPut("/api/products/{id}", async (int id, [FromBody] ProductCreationArgs args, IProductService productService) =>
+{
+    await productService.UpdateProduct(id, args);
+    return Results.NoContent();
+});
+
+app.MapDelete("/api/products/{id}", async (int id, IProductService productService) =>
+{
+    await productService.DeleteProduct(id);
+    return Results.NoContent();
+});
+
+// ----- Orders -----
+// Note: make sure to finalize your IOrderService methods like GetOrders(), etc.
+
+app.MapGet("/api/orders", async (IOrderService orderService) =>
+    await orderService.GetOrders()
+);
+
+app.MapGet("/api/orders/{orderId}", async (int orderId, IOrderService orderService) =>
+    await orderService.GetOrderById(orderId)
+);
+
+// Simplistic "create order" example
+app.MapPost("/api/orders", async ([FromBody] int detailId, IOrderService orderService) =>
+{
+    await orderService.PlaceOrder(detailId);
+    return Results.Ok();
+});
+
+app.MapDelete("/api/orders/{orderId}", async (int orderId, IOrderService orderService) =>
+{
+    await orderService.DeleteOrder(orderId);
+    return Results.NoContent();
+});
+
+if (app.Environment.IsDevelopment())
+{
+    // swagger for quick testing
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.Run();

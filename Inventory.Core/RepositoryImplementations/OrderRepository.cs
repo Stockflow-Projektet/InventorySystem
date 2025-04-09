@@ -33,7 +33,7 @@ namespace Inventory.Core.Repositories
             ";
 
             const string insertDetailSql = @"
-                INSERT INTO [dbo].[orderDetail]
+                INSERT INTO [dbo].[orderDetails]
                     ([productId], [quantity], [orderId], [depotId])
                 VALUES
                     (@ProductId, @Quantity, @OrderId, @DepotId);
@@ -101,7 +101,7 @@ namespace Inventory.Core.Repositories
                        [quantity],
                        [orderId],
                        [depotId]
-                FROM [dbo].[orderDetail]
+                FROM [dbo].[orderDetails]
                 WHERE [orderId] = @id;
             ";
 
@@ -152,7 +152,7 @@ namespace Inventory.Core.Repositories
                        [quantity],
                        [orderId],
                        [depotId]
-                FROM [dbo].[orderDetail];
+                FROM [dbo].[orderDetails];
             ";
 
             using IDbConnection conn = _db.CreateSqlConnection();
@@ -198,7 +198,7 @@ namespace Inventory.Core.Repositories
             Log.Verbose("DeleteOrderAsync called for orderId={Id}", orderId);
 
             const string deleteDetailSql = @"
-                DELETE FROM [dbo].[orderDetail]
+                DELETE FROM [dbo].[orderDetails]
                 WHERE [orderId] = @id;
             ";
             const string deleteOrderSql = @"

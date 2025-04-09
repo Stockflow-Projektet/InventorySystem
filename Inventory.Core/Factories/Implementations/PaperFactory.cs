@@ -24,7 +24,8 @@ public class PaperFactory : IProductFactory
             Price = productCreationArgs.Price,
             PaperSize = productCreationArgs.PaperSize,
             PaperWeight = productCreationArgs.PaperWeight,
-            CoatingType = productCreationArgs.CoatingType
+            CoatingType = productCreationArgs.CoatingType,
+            Status = productCreationArgs.Status
         };
   }
 

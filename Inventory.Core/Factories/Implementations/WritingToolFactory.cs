@@ -24,7 +24,8 @@ public class WritingToolFactory : IProductFactory
             Price = productCreationArgs.Price,
             InkColor = productCreationArgs.InkColor,
             InkType = productCreationArgs.InkType,
-            TipSize = productCreationArgs.TipSize
+            TipSize = productCreationArgs.TipSize,
+            Status = productCreationArgs.Status
         };
     }
 

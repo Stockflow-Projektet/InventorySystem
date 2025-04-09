@@ -26,7 +26,8 @@ public class BookFactory : IProductFactory
             NumberOfPages = productCreationArgs.Pages,
             Author = productCreationArgs.Author,
             Publisher = productCreationArgs.Publisher,
-            PublicationYear = productCreationArgs.PublicationYear
+            PublicationYear = productCreationArgs.PublicationYear,
+            Status = productCreationArgs.Status
         };
     }
     

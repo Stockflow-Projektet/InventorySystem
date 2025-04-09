@@ -18,4 +18,5 @@ public class ProductCreationArgs
     public string InkType { get; set; }
     public decimal TipSize { get; set; }
     public bool IsErasable { get; set; }
+    public string Status { get; set; }
 }
