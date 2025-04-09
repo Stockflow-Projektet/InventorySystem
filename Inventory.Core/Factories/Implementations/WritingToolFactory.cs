@@ -27,4 +27,9 @@ public class WritingToolFactory : IProductFactory
             TipSize = productCreationArgs.TipSize
         };
     }
+
+    public Product UpdateProduct(Product existingProduct, ProductCreationArgs productUpdateargs)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -1,10 +1,12 @@
 using Inventory.API.RepositoryImplementations;
+using Inventory.Core;
 using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.RepositoryInterfaces;
 using Inventory.Core.Services.Implementations;
 using Inventory.Core.Services.Interfaces;
 using Inventory.Logging;
 using Inventory.Core.Database;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
 LoggerConfigurator.ConfigureLogger("API");
@@ -51,15 +53,15 @@ app.UseAuthorization();
 
 //app.MapControllers();
 // Map product endpoints
-app.MapPost("/product", (IProductService productService, string productDto) => productService.AddProduct(productDto)).RequireAuthorization();
+app.MapPost("/product", (IProductService productService, [FromBody] ProductCreationArgs productCreationArgs) => productService.AddProduct(productCreationArgs)).RequireAuthorization();
 app.MapGet("/products", (IProductService productService) => productService.GetProducts());
 app.MapGet("/product/{id}", (IProductService productService, int id) => productService.GetProductById(id));
 app.MapGet("/product/search/{query}", (IProductService productService, string query) => productService.QueryProducts(query));
-app.MapPut("/product/{id}", (IProductService productService, int id) => productService.UpdateProduct(id)).RequireAuthorization();
+app.MapPut("/product/{id}", (IProductService productService, int id, [FromBody] ProductCreationArgs productCreationArgs) => productService.UpdateProduct(id, productCreationArgs)).RequireAuthorization();
 app.MapDelete("/product/{id}", (IProductService productService, int id) => productService.DeleteProduct(id)).RequireAuthorization();
 
 // Map order endpoints
-app.MapPost("/order", (IOrderService orderService, string orderDetail) => orderService.PlaceOrder(orderDetail)).RequireAuthorization();
+app.MapPost("/order", (IOrderService orderService, int orderDetail) => orderService.PlaceOrder(orderDetail)).RequireAuthorization();
 app.MapGet("/orders", (IOrderService orderService) => orderService.GetOrders());
 app.MapGet("/order/{orderid}", (IOrderService orderService, int orderId) => orderService.GetOrderById(orderId));
 app.MapGet("/order/search/{query}", (IOrderService orderService, string query) => orderService.QueryOrders(query));

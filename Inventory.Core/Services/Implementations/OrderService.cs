@@ -39,7 +39,7 @@ public class OrderService : IOrderService
         throw new ApplicationException("Product not in basket");
     }
 
-    public async Task PlaceOrder(OrderCreationArgs orderCreationArgs)
+    public async Task PlaceOrder(int id)
     {
         if (_basket.Count > 0)
         {
