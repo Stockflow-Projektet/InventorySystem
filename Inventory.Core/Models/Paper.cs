@@ -4,12 +4,12 @@ namespace Inventory.Core.Models;
 
 public class Paper : Product
 {
-    private int ProductId { get; set; }
-    private string Type { get; set; }
-    private string Name { get; set; }
-    private string Description { get; set; }
-    private decimal Price { get; set; }
-    private string PaperSize { get; set; }
-    private decimal PaperWeight { get; set; }
-    private string CoatingType { get; set; }
+    public int ProductId { get; set; }
+    public string Type { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public decimal Price { get; set; }
+    public string PaperSize { get; set; }
+    public decimal PaperWeight { get; set; }
+    public string CoatingType { get; set; }
 }

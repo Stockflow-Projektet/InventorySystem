@@ -1,4 +1,5 @@
 ﻿using Inventory.Core.Factories.Interfaces;
+using Inventory.Core.Models;
 using Inventory.Core.Models.Abstracts;
 using Inventory.Core.RepositoryInterfaces;
 using Inventory.Core.Services.Interfaces;
@@ -38,12 +39,12 @@ public class OrderService : IOrderService
         throw new ApplicationException("Product not in basket");
     }
 
-    public void PlaceOrder(string orderDto)
+    public async Task PlaceOrder(OrderCreationArgs orderCreationArgs)
     {
         if (_basket.Count > 0)
         {
             IOrder order = _orderFactory.CreateOrder(_basket);
-            _orderRepository.AddOrderAsync(order);
+            await _orderRepository.AddOrderAsync(order);
         }
         else
         {
@@ -51,28 +52,28 @@ public class OrderService : IOrderService
         }
     }
 
-    public void GetOrders()
+    public async Task<IEnumerable<Order>> GetOrders()
     {
         throw new NotImplementedException();
     }
 
 
-    public void GetOrderById(int orderId)
+    public async Task<Order> GetOrderById(int orderId)
     {
         throw new NotImplementedException();
     }
 
-    public void QueryOrders(string query)
+    public async Task<IEnumerable<Order>> QueryOrders(string query)
     {
         throw new NotImplementedException();
     }
 
-    public void UpdateOrder(int orderId)
+    public async Task UpdateOrder(int orderId)
     {
         throw new NotImplementedException();
     }
 
-    public void DeleteOrder(int orderId)
+    public async Task DeleteOrder(int orderId)
     {
         throw new NotImplementedException();
     }

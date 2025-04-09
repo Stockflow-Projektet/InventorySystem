@@ -4,10 +4,10 @@ namespace Inventory.Core.RepositoryInterfaces;
 
 public interface IProductRepository
 {
-    void AddProductToDb(Product product);
-    List<Product> GetAllProductsFromDb();
-    Product GetProductByIdFromDb(int id);
-    List<Product> QueryProductsFromDb(string query);
-    void UpdateAsync(Product product);
-    void DeleteAsync(int id);
+    Task AddProductToDb(Product product);
+    Task<IEnumerable<Product>> GetAllProductsFromDb();
+    Task<Product> GetProductByIdFromDb(int id);
+    Task<IEnumerable<Product>> QueryProductsFromDb(string query);
+    Task UpdateAsync(Product product);
+    Task DeleteAsync(int id);
 }

@@ -4,10 +4,10 @@ namespace Inventory.Core.Services.Interfaces;
 
 public interface IProductService
 {
-    void AddProduct(string productDto);
-    List<Product> GetProducts();
-    Product GetProductById(int id);
-    List<Product> QueryProducts(string query);
-    void UpdateProduct(int id);
-    void DeleteProduct(int id);
+    Task AddProduct(ProductCreationArgs productCreationArgs);
+    Task<IEnumerable<Product>> GetProducts();
+    Task<Product> GetProductById(int id);
+    Task<IEnumerable<Product>> QueryProducts(string query);
+    Task UpdateProduct(int id);
+    Task DeleteProduct(int id);
 }
