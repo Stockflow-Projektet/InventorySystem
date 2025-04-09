@@ -8,6 +8,6 @@ public interface IProductService
     Task<IEnumerable<Product>> GetProducts();
     Task<Product> GetProductById(int id);
     Task<IEnumerable<Product>> QueryProducts(string query);
-    Task UpdateProduct(int id);
+    Task UpdateProduct(int id, ProductCreationArgs productCreationArgs);
     Task DeleteProduct(int id);
 }
