@@ -14,11 +14,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aabb8751-a111-418e-aa25-52a003ff2183" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StockFlowInventorySystem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/BookFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/BookFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/PaperFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Implementations/PaperFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IProductFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Factories/Interfaces/IProductFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,13 +131,20 @@
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet." root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Inventory.API/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Inventory.Core/Models/OrderItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Inventory.Core/Services/Implementations/ProductService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Inventory.Core/Services/Interfaces/IProductService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -286,7 +288,7 @@
       <workItem from="1743988756441" duration="887000" />
       <workItem from="1744029267247" duration="3985000" />
       <workItem from="1744144572874" duration="15274000" />
-      <workItem from="1744172703463" duration="5910000" />
+      <workItem from="1744172703463" duration="9813000" />
     </task>
     <servers />
   </component>
