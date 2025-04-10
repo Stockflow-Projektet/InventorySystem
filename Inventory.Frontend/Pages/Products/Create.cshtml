@@ -1,6 +1,6 @@
 ﻿@page
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model CreateModel
+@model Inventory.Frontend.Pages.Products.CreateModel
 @{
     ViewData["Title"] = "Create New Product";
 }
@@ -8,42 +8,59 @@
 <h2>Create New Product</h2>
 
 <form method="post">
+    <!-- Show validation errors -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!-- Product Type Dropdown -->
     <div class="mb-3">
         <label asp-for="NewProduct.Type" class="form-label"></label>
-        <input asp-for="NewProduct.Type" class="form-control"/>
+        <select asp-for="NewProduct.Type" class="form-select">
+            <option value="">-- Select Product Type --</option>
+            <option value="B">Book</option>
+            <option value="P">Paper</option>
+            <option value="W">Writing Implements</option>
+        </select>
         <span asp-validation-for="NewProduct.Type" class="text-danger"></span>
     </div>
 
+    <!-- Product Name -->
     <div class="mb-3">
         <label asp-for="NewProduct.Name" class="form-label"></label>
-        <input asp-for="NewProduct.Name" class="form-control"/>
+        <input asp-for="NewProduct.Name" class="form-control" />
         <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
     </div>
 
+    <!-- Manufacturer -->
     <div class="mb-3">
         <label asp-for="NewProduct.Manufacturer" class="form-label"></label>
-        <input asp-for="NewProduct.Manufacturer" class="form-control"/>
+        <input asp-for="NewProduct.Manufacturer" class="form-control" />
         <span asp-validation-for="NewProduct.Manufacturer" class="text-danger"></span>
     </div>
 
+    <!-- Description (textarea) -->
     <div class="mb-3">
         <label asp-for="NewProduct.Description" class="form-label"></label>
-        <input asp-for="NewProduct.Description" class="form-control"/>
+        <textarea asp-for="NewProduct.Description" class="form-control"></textarea>
         <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
     </div>
 
+    <!-- Price (number with step) -->
     <div class="mb-3">
         <label asp-for="NewProduct.Price" class="form-label"></label>
-        <input asp-for="NewProduct.Price" class="form-control"/>
+        <input asp-for="NewProduct.Price" class="form-control" type="number" step="0.01" />
         <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="NewProduct.Amount" class="form-label"></label>
-        <input asp-for="NewProduct.Amount" class="form-control"/>
-        <span asp-validation-for="NewProduct.Amount" class="text-danger"></span>
-    </div>
+    @* <div class="mb-3">
+    <label asp-for="NewProduct.Amount" class="form-label"></label>
+    <input asp-for="NewProduct.Amount" class="form-control" type="number" />
+    <span asp-validation-for="NewProduct.Amount" class="text-danger"></span>
+    </div> *@
 
     <button type="submit" class="btn btn-success">Create</button>
     <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
