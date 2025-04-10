@@ -1,5 +1,4 @@
 ﻿@page
-@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Inventory.Frontend.Pages.Products.CreateModel
 @{
     ViewData["Title"] = "Create New Product";
@@ -7,14 +6,17 @@
 
 <h2>Create New Product</h2>
 
-<form method="post">
-    <!-- Show validation errors -->
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<!-- Show validation or server-side errors -->
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form method="post" id="createForm">
+    <!-- Hidden field for Status -->
+    <input type="hidden" asp-for="NewProduct.Status" />
 
     <!-- Product Type Dropdown -->
     <div class="mb-3">
         <label asp-for="NewProduct.Type" class="form-label"></label>
-        <select asp-for="NewProduct.Type" class="form-select">
+        <select asp-for="NewProduct.Type" class="form-select" onchange="toggleTypeFields()" id="typeSelect">
             <option value="">-- Select Product Type --</option>
             <option value="B">Book</option>
             <option value="P">Paper</option>
@@ -28,13 +30,6 @@
         <label asp-for="NewProduct.Name" class="form-label"></label>
         <input asp-for="NewProduct.Name" class="form-control" />
         <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
-    </div>
-
-    <!-- Manufacturer -->
-    <div class="mb-3">
-        <label asp-for="NewProduct.Manufacturer" class="form-label"></label>
-        <input asp-for="NewProduct.Manufacturer" class="form-control" />
-        <span asp-validation-for="NewProduct.Manufacturer" class="text-danger"></span>
     </div>
 
     <!-- Description (textarea) -->
@@ -51,16 +46,348 @@
         <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
     </div>
 
-    @* <div class="mb-3">
-    <label asp-for="NewProduct.Amount" class="form-label"></label>
-    <input asp-for="NewProduct.Amount" class="form-control" type="number" />
-    <span asp-validation-for="NewProduct.Amount" class="text-danger"></span>
-    </div> *@
+    <!-- Book fields (B) -->
+    <div id="bookFields" style="display:none;">
+        <h4>Book-specific fields</h4>
+        <div class="mb-3">
+            <label asp-for="NewProduct.Author" class="form-label"></label>
+            <input asp-for="NewProduct.Author" class="form-control" />
+            <span asp-validation-for="NewProduct.Author" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.Publisher" class="form-label"></label>
+            <input asp-for="NewProduct.Publisher" class="form-control" />
+            <span asp-validation-for="NewProduct.Publisher" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.PublicationYear" class="form-label"></label>
+            <input asp-for="NewProduct.PublicationYear" class="form-control" type="number" />
+            <span asp-validation-for="NewProduct.PublicationYear" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.NumberOfPages" class="form-label"></label>
+            <input asp-for="NewProduct.NumberOfPages" class="form-control" type="number" />
+            <span asp-validation-for="NewProduct.NumberOfPages" class="text-danger"></span>
+        </div>
+    </div>
 
-    <button type="submit" class="btn btn-success">Create</button>
+    <!-- Paper fields (P) -->
+    <div id="paperFields" style="display:none;">
+        <h4>Paper-specific fields</h4>
+        <div class="mb-3">
+            <label asp-for="NewProduct.PaperSize" class="form-label"></label>
+            <input asp-for="NewProduct.PaperSize" class="form-control" />
+            <span asp-validation-for="NewProduct.PaperSize" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.PaperWeight" class="form-label"></label>
+            <input asp-for="NewProduct.PaperWeight" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="NewProduct.PaperWeight" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.PaperColor" class="form-label"></label>
+            <input asp-for="NewProduct.PaperColor" class="form-control" />
+            <span asp-validation-for="NewProduct.PaperColor" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.CoatingType" class="form-label"></label>
+            <input asp-for="NewProduct.CoatingType" class="form-control" />
+            <span asp-validation-for="NewProduct.CoatingType" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Writing Implements fields (W) -->
+    <div id="writingFields" style="display:none;">
+        <h4>Writing-specific fields</h4>
+        <div class="mb-3">
+            <label asp-for="NewProduct.InkColor" class="form-label"></label>
+            <input asp-for="NewProduct.InkColor" class="form-control" />
+            <span asp-validation-for="NewProduct.InkColor" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.InkType" class="form-label"></label>
+            <input asp-for="NewProduct.InkType" class="form-control" />
+            <span asp-validation-for="NewProduct.InkType" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.TipSize" class="form-label"></label>
+            <input asp-for="NewProduct.TipSize" class="form-control" type="number" step="0.01" />
+            <span asp-validation-for="NewProduct.TipSize" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.PencilLeadHardness" class="form-label"></label>
+            <input asp-for="NewProduct.PencilLeadHardness" class="form-control" />
+            <span asp-validation-for="NewProduct.PencilLeadHardness" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="NewProduct.IsErasable" class="form-label"></label>
+            <input asp-for="NewProduct.IsErasable" class="form-check-input" type="checkbox" />
+            <span asp-validation-for="NewProduct.IsErasable" class="text-danger"></span>
+        </div>
+    </div>
+
+    <!-- Instead of a normal "submit", let's add a "Preview" button that opens a modal. -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal"
+            onclick="fillConfirmModal()">
+        Preview & Confirm
+    </button>
+
     <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>
 
+<!-- Confirm/Preview Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h5 class="modal-title">Please check if this is correct</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Type</th>
+                            <td id="previewType"></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td id="previewName"></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td id="previewDescription"></td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td id="previewPrice"></td>
+                        </tr>
+                        <tr id="bookRow1" style="display:none;">
+                            <th>Author</th>
+                            <td id="previewAuthor"></td>
+                        </tr>
+                        <tr id="bookRow2" style="display:none;">
+                            <th>Publisher</th>
+                            <td id="previewPublisher"></td>
+                        </tr>
+                        <tr id="bookRow3" style="display:none;">
+                            <th>Publication Year</th>
+                            <td id="previewPublicationYear"></td>
+                        </tr>
+                        <tr id="bookRow4" style="display:none;">
+                            <th>Pages</th>
+                            <td id="previewNumberOfPages"></td>
+                        </tr>
+                        <tr id="paperRow1" style="display:none;">
+                            <th>Paper Size</th>
+                            <td id="previewPaperSize"></td>
+                        </tr>
+                        <tr id="paperRow2" style="display:none;">
+                            <th>Paper Weight</th>
+                            <td id="previewPaperWeight"></td>
+                        </tr>
+                        <tr id="paperRow3" style="display:none;">
+                            <th>Paper Color</th>
+                            <td id="previewPaperColor"></td>
+                        </tr>
+                        <tr id="paperRow4" style="display:none;">
+                            <th>Coating Type</th>
+                            <td id="previewCoatingType"></td>
+                        </tr>
+                        <tr id="writingRow1" style="display:none;">
+                            <th>Ink Color</th>
+                            <td id="previewInkColor"></td>
+                        </tr>
+                        <tr id="writingRow2" style="display:none;">
+                            <th>Ink Type</th>
+                            <td id="previewInkType"></td>
+                        </tr>
+                        <tr id="writingRow3" style="display:none;">
+                            <th>Tip Size</th>
+                            <td id="previewTipSize"></td>
+                        </tr>
+                        <tr id="writingRow4" style="display:none;">
+                            <th>Pencil Lead Hardness</th>
+                            <td id="previewPencilLeadHardness"></td>
+                        </tr>
+                        <tr id="writingRow5" style="display:none;">
+                            <th>Is Erasable?</th>
+                            <td id="previewIsErasable"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Modal footer with "Yes/No" -->
+            <div class="modal-footer">
+                <!-- "Yes" => submit the form -->
+                <button type="submit" class="btn btn-success" form="createForm">Yes</button>
+                <!-- "No" => just close the modal -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Placeholder Method:
+        function toggleTypeFields() {
+            const selectedType = document.getElementById("typeSelect").value;
+
+            // 1) Show/hide the containers
+            document.getElementById("bookFields").style.display = (selectedType === "B") ? "block" : "none";
+            document.getElementById("paperFields").style.display = (selectedType === "P") ? "block" : "none";
+            document.getElementById("writingFields").style.display = (selectedType === "W") ? "block" : "none";
+
+            // 2) Fill out irrelevant fields with default/dummy values
+            if (selectedType === "B") {
+                // Paper defaults
+                document.getElementById("NewProduct_PaperSize").value = "Empty";
+                document.getElementById("NewProduct_PaperWeight").value = "0";
+                document.getElementById("NewProduct_PaperColor").value = "Empty";
+                document.getElementById("NewProduct_CoatingType").value = "Empty";
+
+                // Writing defaults
+                document.getElementById("NewProduct_InkColor").value = "Empty";
+                document.getElementById("NewProduct_InkType").value = "Empty";
+                document.getElementById("NewProduct_TipSize").value = "0";
+                document.getElementById("NewProduct_PencilLeadHardness").value = "Empty";
+                document.getElementById("NewProduct_IsErasable").checked = false;
+            }
+            else if (selectedType === "P") {
+                // Book defaults
+                document.getElementById("NewProduct_Author").value = "Empty";
+                document.getElementById("NewProduct_Publisher").value = "Empty";
+                document.getElementById("NewProduct_PublicationYear").value = "0";
+                document.getElementById("NewProduct_NumberOfPages").value = "0";
+
+                // Writing defaults
+                document.getElementById("NewProduct_InkColor").value = "Empty";
+                document.getElementById("NewProduct_InkType").value = "Empty";
+                document.getElementById("NewProduct_TipSize").value = "0";
+                document.getElementById("NewProduct_PencilLeadHardness").value = "Empty";
+                document.getElementById("NewProduct_IsErasable").checked = false;
+            }
+            else if (selectedType === "W") {
+                // Book defaults
+                document.getElementById("NewProduct_Author").value = "Empty";
+                document.getElementById("NewProduct_Publisher").value = "Empty";
+                document.getElementById("NewProduct_PublicationYear").value = "0";
+                document.getElementById("NewProduct_NumberOfPages").value = "0";
+
+                // Paper defaults
+                document.getElementById("NewProduct_PaperSize").value = "Empty";
+                document.getElementById("NewProduct_PaperWeight").value = "0";
+                document.getElementById("NewProduct_PaperColor").value = "Empty";
+                document.getElementById("NewProduct_CoatingType").value = "Empty";
+            }
+            else {
+                // If no type selected, you could reset everything to empty
+                document.getElementById("NewProduct_Author").value = "";
+                document.getElementById("NewProduct_Publisher").value = "";
+                document.getElementById("NewProduct_PublicationYear").value = "";
+                document.getElementById("NewProduct_NumberOfPages").value = "";
+
+                document.getElementById("NewProduct_PaperSize").value = "";
+                document.getElementById("NewProduct_PaperWeight").value = "";
+                document.getElementById("NewProduct_PaperColor").value = "";
+                document.getElementById("NewProduct_CoatingType").value = "";
+
+                document.getElementById("NewProduct_InkColor").value = "";
+                document.getElementById("NewProduct_InkType").value = "";
+                document.getElementById("NewProduct_TipSize").value = "";
+                document.getElementById("NewProduct_PencilLeadHardness").value = "";
+                document.getElementById("NewProduct_IsErasable").checked = false;
+            }
+        }
+
+        // Fill the preview table in the modal before showing
+        function fillConfirmModal() {
+            // Grab values from the form
+            const typeVal = document.getElementById("typeSelect").value;
+            const nameVal = document.getElementById("NewProduct_Name").value;
+            const descVal = document.getElementById("NewProduct_Description").value;
+            const priceVal = document.getElementById("NewProduct_Price").value;
+
+            // Populate common preview fields
+            document.getElementById("previewType").innerText = typeVal || "(none)";
+            document.getElementById("previewName").innerText = nameVal || "(none)";
+            document.getElementById("previewDescription").innerText = descVal || "(none)";
+            document.getElementById("previewPrice").innerText = priceVal || "(none)";
+
+            // Hide all special rows by default
+            hideAllSpecialRows();
+
+            if (typeVal === "B") {
+                // Book fields
+                document.getElementById("bookRow1").style.display = "";
+                document.getElementById("bookRow2").style.display = "";
+                document.getElementById("bookRow3").style.display = "";
+                document.getElementById("bookRow4").style.display = "";
+
+                document.getElementById("previewAuthor").innerText =
+                    document.getElementById("NewProduct_Author").value || "(none)";
+                document.getElementById("previewPublisher").innerText =
+                    document.getElementById("NewProduct_Publisher").value || "(none)";
+                document.getElementById("previewPublicationYear").innerText =
+                    document.getElementById("NewProduct_PublicationYear").value || "(none)";
+                document.getElementById("previewNumberOfPages").innerText =
+                    document.getElementById("NewProduct_NumberOfPages").value || "(none)";
+            }
+            else if (typeVal === "P") {
+                // Paper fields
+                document.getElementById("paperRow1").style.display = "";
+                document.getElementById("paperRow2").style.display = "";
+                document.getElementById("paperRow3").style.display = "";
+                document.getElementById("paperRow4").style.display = "";
+
+                document.getElementById("previewPaperSize").innerText =
+                    document.getElementById("NewProduct_PaperSize").value || "(none)";
+                document.getElementById("previewPaperWeight").innerText =
+                    document.getElementById("NewProduct_PaperWeight").value || "(none)";
+                document.getElementById("previewPaperColor").innerText =
+                    document.getElementById("NewProduct_PaperColor").value || "(none)";
+                document.getElementById("previewCoatingType").innerText =
+                    document.getElementById("NewProduct_CoatingType").value || "(none)";
+            }
+            else if (typeVal === "W") {
+                // Writing fields
+                document.getElementById("writingRow1").style.display = "";
+                document.getElementById("writingRow2").style.display = "";
+                document.getElementById("writingRow3").style.display = "";
+                document.getElementById("writingRow4").style.display = "";
+                document.getElementById("writingRow5").style.display = "";
+
+                document.getElementById("previewInkColor").innerText =
+                    document.getElementById("NewProduct_InkColor").value || "(none)";
+                document.getElementById("previewInkType").innerText =
+                    document.getElementById("NewProduct_InkType").value || "(none)";
+                document.getElementById("previewTipSize").innerText =
+                    document.getElementById("NewProduct_TipSize").value || "(none)";
+                document.getElementById("previewPencilLeadHardness").innerText =
+                    document.getElementById("NewProduct_PencilLeadHardness").value || "(none)";
+                // Checkbox => "Yes"/"No"
+                const isErasableChecked = document.getElementById("NewProduct_IsErasable").checked;
+                document.getElementById("previewIsErasable").innerText = isErasableChecked ? "Yes" : "No";
+            }
+        }
+
+        function hideAllSpecialRows() {
+            const rows = [
+                "bookRow1","bookRow2","bookRow3","bookRow4",
+                "paperRow1","paperRow2","paperRow3","paperRow4",
+                "writingRow1","writingRow2","writingRow3","writingRow4","writingRow5"
+            ];
+            for (let r of rows) {
+                document.getElementById(r).style.display = "none";
+            }
+        }
+
+        // Run on page load in case there's a preselected Type
+        toggleTypeFields();
+    </script>
 }

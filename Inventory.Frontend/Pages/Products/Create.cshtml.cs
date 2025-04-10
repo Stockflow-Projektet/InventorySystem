@@ -20,23 +20,47 @@ namespace Inventory.Frontend.Pages.Products
 
         public void OnGet()
         {
-            // Display empty form on GET
+            Log.Verbose("Create Product OnGet called, displaying empty form.");
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Log.Verbose("OnPostAsync started for Create Product.");
+
             if (!ModelState.IsValid)
             {
-                // Return the same page if validation fails
+                // The user has missing/invalid fields
+                Log.Warning("Create product form invalid. Will return the same page to show errors.");
                 return Page();
             }
 
-            Log.Information("User submitted a form to create a product with data: {@Product}", NewProduct);
+            // Log basic info about what user is trying to create
+            Log.Information("User submitted a form to create a product: {@NewProduct}", NewProduct);
 
-            // Call the frontend service which posts to the API expecting ProductCreationArgs
-            await _productService.CreateProductAsync(NewProduct);
+            try
+            {
+                Log.Debug("Calling ProductService.CreateProductAsync with the new product data...");
+                await _productService.CreateProductAsync(NewProduct);
 
-            return RedirectToPage("Index");
+                Log.Debug("ProductService.CreateProductAsync completed successfully for product: {ProductName}",
+                    NewProduct.Name);
+
+                // If the API call succeeded
+                Log.Information("Redirecting to Index page after successful product creation.");
+                return RedirectToPage("Index");
+            }
+            catch (Exception ex)
+            {
+                // If the API call threw an exception or returned an error
+                Log.Fatal(ex, "Fatal error while creating product: {ProductName}", NewProduct.Name);
+
+                // Show a generic error message in the page
+                ModelState.AddModelError(string.Empty,
+                    "An error occurred creating this product. Please check logs or try again.");
+
+                // Stay on the create page
+                return Page();
+            }
         }
     }
 }

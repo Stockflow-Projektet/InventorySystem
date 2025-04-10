@@ -6,7 +6,7 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class WritingToolFactory : IProductFactory
 {
-    public string FactoryType => "wri";
+    public string FactoryType => "W";
     public Product CreateProduct(ProductCreationArgs productCreationArgs)
     {
         // Here constraints on writing tool creation are defined
@@ -17,7 +17,7 @@ public class WritingToolFactory : IProductFactory
         // Create and return the product
         return new WritingImplements()
         {
-            Type = "wri",
+            Type = "W",
             ProductId = 0,
             Name = productCreationArgs.Name,
             Description = productCreationArgs.Description,

@@ -6,7 +6,7 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class PaperFactory : IProductFactory
 {
-    public string FactoryType => "pap";
+    public string FactoryType => "P";
     public Product CreateProduct(ProductCreationArgs productCreationArgs)
     {
         // Here constraints on paper creation are defined
@@ -17,7 +17,7 @@ public class PaperFactory : IProductFactory
         // Create and return the product
         return new Paper()
         {
-            Type = "pap",
+            Type = "P",
             ProductId = 0,
             Name = productCreationArgs.Name,
             Description = productCreationArgs.Description,
@@ -44,7 +44,7 @@ public class PaperFactory : IProductFactory
         var existingPaper = (Paper)existingProduct;
 
         // Apply updates from the new data to the existing product
-        existingPaper.Type = "boo";
+        existingPaper.Type = "P";
         existingPaper.Name = !string.IsNullOrWhiteSpace(updatedProductData.Name)
             ? updatedProductData.Name
             : existingPaper.Name;

@@ -11,8 +11,6 @@ using Inventory.Logging;  // <-- your custom logging
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-LoggerConfigurator.ConfigureLogger("Inventory.API");
-
 var builder = WebApplication.CreateBuilder(args);
 
 // 1) Configure Serilog logging

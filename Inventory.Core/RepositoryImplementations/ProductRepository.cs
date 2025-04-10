@@ -382,14 +382,14 @@ namespace Inventory.Core.Repositories
 
         private DynamicParameters BuildProductParameters(Product product)
         {
-            var p = new DynamicParameters();
+            var DynamicParas = new DynamicParameters();
 
-            p.Add("@type", product.Type);
-            p.Add("@name", product.Name);
-            p.Add("@manufacturer", product.Manufacturer);
-            p.Add("@description", product.Description);
-            p.Add("@price", product.Price);
-            p.Add("@status", product.Status);
+            DynamicParas.Add("@type", product.Type);
+            DynamicParas.Add("@name", product.Name);
+            DynamicParas.Add("@manufacturer", product.Manufacturer);
+            DynamicParas.Add("@description", product.Description);
+            DynamicParas.Add("@price", product.Price);
+            DynamicParas.Add("@status", product.Status);
 
             // Specialized columns default to null
             string author = null, publisher = null, isbn = null, pencilLead = null;
@@ -409,38 +409,38 @@ namespace Inventory.Core.Repositories
                     numberOfPages = b.NumberOfPages;
                     break;
 
-                case Paper pap:
-                    paperSize = pap.PaperSize;
-                    paperWeight = pap.PaperWeight;
-                    paperColor = pap.PaperColor;
-                    coatingType = pap.CoatingType;
+                case Paper p:
+                    paperSize = p.PaperSize;
+                    paperWeight = p.PaperWeight;
+                    paperColor = p.PaperColor;
+                    coatingType = p.CoatingType;
                     break;
 
-                case WritingImplements wt:
-                    inkColor = wt.InkColor;
-                    inkType = wt.InkType;
-                    tipSize = wt.TipSize;
-                    pencilLead = wt.PencilLeadHardness;
-                    isErasable = wt.IsErasable;
+                case WritingImplements w:
+                    inkColor = w.InkColor;
+                    inkType = w.InkType;
+                    tipSize = w.TipSize;
+                    pencilLead = w.PencilLeadHardness;
+                    isErasable = w.IsErasable;
                     break;
             }
 
-            p.Add("@author", author);
-            p.Add("@publisher", publisher);
-            p.Add("@ISBN", isbn);
-            p.Add("@PublicationYear", publicationYear);
-            p.Add("@NumberOfPages", numberOfPages);
-            p.Add("@InkColor", inkColor);
-            p.Add("@InkType", inkType);
-            p.Add("@TipSize", tipSize);
-            p.Add("@PencilLeadHardness", pencilLead);
-            p.Add("@IsErasable", isErasable);
-            p.Add("@PaperSize", paperSize);
-            p.Add("@PaperWeight", paperWeight);
-            p.Add("@PaperColor", paperColor);
-            p.Add("@CoatingType", coatingType);
+            DynamicParas.Add("@author", author);
+            DynamicParas.Add("@publisher", publisher);
+            DynamicParas.Add("@ISBN", isbn);
+            DynamicParas.Add("@PublicationYear", publicationYear);
+            DynamicParas.Add("@NumberOfPages", numberOfPages);
+            DynamicParas.Add("@InkColor", inkColor);
+            DynamicParas.Add("@InkType", inkType);
+            DynamicParas.Add("@TipSize", tipSize);
+            DynamicParas.Add("@PencilLeadHardness", pencilLead);
+            DynamicParas.Add("@IsErasable", isErasable);
+            DynamicParas.Add("@PaperSize", paperSize);
+            DynamicParas.Add("@PaperWeight", paperWeight);
+            DynamicParas.Add("@PaperColor", paperColor);
+            DynamicParas.Add("@CoatingType", coatingType);
 
-            return p;
+            return DynamicParas;
         }
 
         private Product MapToConcreteProduct(dynamic row)

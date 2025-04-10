@@ -6,7 +6,7 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class BookFactory : IProductFactory
 {
-    public string FactoryType => "boo";
+    public string FactoryType => "B";
 
     public Product CreateProduct(ProductCreationArgs productCreationArgs)
     {
@@ -18,7 +18,7 @@ public class BookFactory : IProductFactory
         // Create and return the product
         return new Book
         {
-            Type = "boo",
+            Type = "B",
             ProductId = 0,
             Name = productCreationArgs.Name,
             Description = productCreationArgs.Description,
@@ -46,7 +46,7 @@ public class BookFactory : IProductFactory
         var existingBook = (Book)existingProduct;
         
         // Apply updates from the new data to the existing product
-        existingBook.Type = "boo";
+        existingBook.Type = "B";
         existingBook.Name = !string.IsNullOrWhiteSpace(updatedProductData.Name) ? updatedProductData.Name : existingBook.Name;
 
         existingBook.Description = !string.IsNullOrWhiteSpace(updatedProductData.Description) ? updatedProductData.Description : existingBook.Description;

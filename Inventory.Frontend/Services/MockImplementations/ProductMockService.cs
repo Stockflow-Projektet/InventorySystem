@@ -5,60 +5,53 @@ using System.Threading.Tasks;
 using Inventory.Frontend.Services.Interfaces;
 using Inventory.Frontend.Views;
 using Serilog;
- 
+
 namespace Inventory.Frontend.Services
 {
     public class ProductMockService : IProductService
     {
+        // In-memory mock list of ProductViewModel
         private static readonly List<ProductViewModel> _products = new List<ProductViewModel>
         {
-            // Example Paper product
+            // Example Paper
             new ProductViewModel
             {
                 ProductId = 1,
-                Type = "PAP",
+                Type = "P",
                 Name = "A4 White Paper",
-                Manufacturer = "Papermill Co.",
                 Description = "High-quality A4 white paper.",
                 Price = 9.99m,
-                Amount = 500,
-                Status = "A",
+                // Paper-specific
                 PaperSize = "A4",
                 PaperWeight = 80,
-                PaperColor = "White",
-                CoatingType = null
+                PaperColor = "White"
+                // CoatingType = null  (omitted for brevity)
             },
-            // Example Writing product
+            // Example Writing
             new ProductViewModel
             {
                 ProductId = 2,
-                Type = "WRI",
+                Type = "W",
                 Name = "Gel Pen Blue",
-                Manufacturer = "PenCorp",
                 Description = "Smooth-writing blue gel pen.",
                 Price = 1.50m,
-                Amount = 100,
-                Status = "A",
+                // Writing-specific
                 InkColor = "Blue",
                 InkType = "Gel",
                 TipSize = 0.7m,
-                PencilLeadHardness = null,
                 IsErasable = false
             },
-            // Example Book product
+            // Example Book
             new ProductViewModel
             {
                 ProductId = 3,
-                Type = "BOOK",
+                Type = "B",
                 Name = "The Great Gatsby",
-                Manufacturer = "Vintage Books",
                 Description = "Classic novel by F. Scott Fitzgerald.",
                 Price = 10.99m,
-                Amount = 20,
-                Status = "A",
+                // Book-specific
                 Author = "F. Scott Fitzgerald",
                 Publisher = "Charles Scribner's Sons",
-                ISBN = "9780743273565",
                 PublicationYear = 1925,
                 NumberOfPages = 180
             },
@@ -66,35 +59,34 @@ namespace Inventory.Frontend.Services
             new ProductViewModel
             {
                 ProductId = 4,
-                Type = "BOOK",
+                Type = "B",
                 Name = "C# in Depth",
-                Manufacturer = "Manning",
                 Description = "A deep dive into C# by Jon Skeet.",
                 Price = 39.99m,
-                Amount = 15,
-                Status = "A",
+                // Book-specific
                 Author = "Jon Skeet",
                 Publisher = "Manning",
-                ISBN = "9781617294532",
                 PublicationYear = 2019,
                 NumberOfPages = 528
             }
         };
- 
+
         public Task<IEnumerable<ProductViewModel>> GetProductsAsync()
         {
             Log.Verbose("Mock: Fetching all products (no filter).");
             Log.Debug("Mock: Currently we have {Count} products in memory.", _products.Count);
             return Task.FromResult(_products.AsEnumerable());
         }
- 
+
         public Task<IEnumerable<ProductViewModel>> GetProductsByTypeAsync(string productType)
         {
             try
             {
                 Log.Verbose("Mock: Fetching products by type: {ProductType}", productType);
-                var filtered = _products.Where(p => p.Type == productType).ToList();
- 
+                var filtered = _products
+                    .Where(p => p.Type.Equals(productType, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
                 if (!filtered.Any())
                 {
                     Log.Warning("Mock: No products found with type {ProductType}.", productType);
@@ -103,7 +95,7 @@ namespace Inventory.Frontend.Services
                 {
                     Log.Debug("Mock: Found {Count} products of type {ProductType}.", filtered.Count, productType);
                 }
- 
+
                 return Task.FromResult(filtered.AsEnumerable());
             }
             catch (Exception ex)
@@ -112,24 +104,19 @@ namespace Inventory.Frontend.Services
                 throw;
             }
         }
- 
+
+        /// <summary>
+        /// Because our new ProductViewModel no longer has an ID,
+        /// we'll just return null. If you still need an ID, consider
+        /// adding a "ProductId" property back into your view model.
+        /// </summary>
         public Task<ProductViewModel> GetProductByIdAsync(long productId)
         {
-            Log.Verbose("Mock: Fetching product by ID = {ProductId}", productId);
-            var product = _products.FirstOrDefault(p => p.ProductId == productId);
- 
-            if (product == null)
-            {
-                Log.Warning("Mock: No product found with ID {ProductId}", productId);
-            }
-            else
-            {
-                Log.Debug("Mock: Found product {Name} (ID={ProductId})", product.Name, productId);
-            }
- 
-            return Task.FromResult(product);
+            Log.Verbose("Mock: Called GetProductByIdAsync({ProductId}) but no ID field in the new model.", productId);
+            // Return null or do any custom logic if you want to keep a hidden ID in memory.
+            return Task.FromResult<ProductViewModel>(null);
         }
- 
+
         public Task CreateProductAsync(ProductViewModel product)
         {
             if (product == null)
@@ -137,14 +124,14 @@ namespace Inventory.Frontend.Services
                 Log.Warning("Mock: CreateProductAsync called with null product!");
                 return Task.CompletedTask;
             }
- 
+
             try
             {
                 Log.Information("Mock: Creating new product: {@Product}", product);
-                product.ProductId = _products.Max(p => p.ProductId) + 1;
+                // Just add to the list (no actual ID to assign)
                 _products.Add(product);
- 
-                Log.Information("Mock: Successfully added product with ID {ProductId}", product.ProductId);
+
+                Log.Information("Mock: Successfully added product: {Name} (Type={Type})", product.Name, product.Type);
                 return Task.CompletedTask;
             }
             catch (Exception ex)

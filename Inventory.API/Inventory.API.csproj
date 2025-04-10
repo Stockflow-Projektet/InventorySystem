@@ -7,12 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Inventory.Core\Inventory.Core.csproj"/>
-        <ProjectReference Include="..\Inventory.Logging\Inventory.Logging.csproj"/>
+        <ProjectReference Include="..\Inventory.Core\Inventory.Core.csproj" />
+        <ProjectReference Include="..\Inventory.Logging\Inventory.Logging.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Logs\Inventory.API\" />
     </ItemGroup>
 
 </Project>
