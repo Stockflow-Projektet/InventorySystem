@@ -368,3 +368,4 @@ packages/
 
 /Inventory.DBLocal/Inventory.DBLocal.csproj
 
+/Inventory.Database/DBPopulater/Connection.cs
