@@ -1,4 +1,5 @@
-﻿using Inventory.Core.Factories.Interfaces;
+﻿using Inventory.Core.DTO_s;
+using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.Models;
 using Inventory.Core.Models.Abstracts;
 using Inventory.Core.RepositoryInterfaces;
@@ -38,18 +39,14 @@ namespace Inventory.Core.Services.Implementations
                 throw new ApplicationException("Product not in basket");
         }
 
-        public async Task PlaceOrder(int placeholderId)
+        public async Task<int> PlaceOrder(OrderDto dto)
         {
-            // The 'placeholderId' parameter here is just an example 
-            // from your minimal API route. In practice you'd pass in an order detail object.
+            // Build domain model from the DTO
+            IOrder order = _orderFactory.CreateOrder(dto);
 
-            if (_basket.Count == 0)
-                throw new ApplicationException("Basket is empty");
-
-            IOrder order = _orderFactory.CreateOrder(_basket);
-            await _orderRepository.AddOrderAsync(order);
-
-            // Could also reduce inventory, etc.
+            // Insert into DB
+            var newOrderId = await _orderRepository.AddOrderAsync(order);
+            return newOrderId;
         }
 
         public async Task<IEnumerable<Order>> GetOrders()

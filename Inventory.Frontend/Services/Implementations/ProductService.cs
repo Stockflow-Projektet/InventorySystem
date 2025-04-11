@@ -52,7 +52,7 @@ namespace Inventory.Frontend.Services.Implementations
             }
         }
 
-        public async Task<ProductViewModel> GetProductByIdAsync(long productId)
+        public async Task<ProductViewModel> GetProductByIdAsync(int productId)
         {
             Log.Verbose("ProductService: Fetching product by ID={ProductId}", productId);
             try

@@ -1,4 +1,5 @@
-﻿using Inventory.Core.Factories.Interfaces;
+﻿using Inventory.Core.DTO_s;
+using Inventory.Core.Factories.Interfaces;
 using Inventory.Core.Models;
 using Inventory.Core.Models.Abstracts;
 
@@ -6,16 +7,28 @@ namespace Inventory.Core.Factories.Implementations;
 
 public class OrderFactory : IOrderFactory
 {
-    public IOrder CreateOrder(List<Product> cart)
+    public IOrder CreateOrder(OrderDto dto)
     {
-        IOrder order = new Order();
-
-        order.OrderDate = DateTime.Now;
-        foreach (Product product in cart)
+        // Create the domain model
+        IOrder order = new Order
         {
-            var orderItem = new OrderDetail();
-            orderItem.ProductId = product.GetProductId();
+            OrderDate = dto.OrderDate
+            // You can also set other top-level properties if your domain supports them
+        };
+
+        // For each detail in dto, convert to an IOrderDetail
+        foreach (var detailDto in dto.Details)
+        {
+            var detail = new OrderDetail
+            {
+                ProductId = detailDto.ProductId,
+                Quantity = detailDto.Quantity,
+                DepotId = detailDto.DepotId
+            };
+            order.OrderDetails.Add(detail);
         }
+
         return order;
     }
+
 }

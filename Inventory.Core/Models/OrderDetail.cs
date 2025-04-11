@@ -11,4 +11,3 @@ namespace Inventory.Core.Models
         public int DepotId { get; set; }
     }
 }
-

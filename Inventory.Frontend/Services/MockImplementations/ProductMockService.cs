@@ -110,7 +110,7 @@ namespace Inventory.Frontend.Services
         /// we'll just return null. If you still need an ID, consider
         /// adding a "ProductId" property back into your view model.
         /// </summary>
-        public Task<ProductViewModel> GetProductByIdAsync(long productId)
+        public Task<ProductViewModel> GetProductByIdAsync(int productId)
         {
             Log.Verbose("Mock: Called GetProductByIdAsync({ProductId}) but no ID field in the new model.", productId);
             // Return null or do any custom logic if you want to keep a hidden ID in memory.

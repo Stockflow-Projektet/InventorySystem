@@ -3,31 +3,63 @@
 @{
     ViewData["Title"] = "Create New Order";
 }
- 
+
 <h2>Create New Order</h2>
- 
+
 <form method="post">
-<div class="mb-3">
-<label asp-for="NewOrder.OrderDate" class="form-label">Order Date</label>
-<input asp-for="NewOrder.OrderDate" class="form-control" type="date" />
-<span asp-validation-for="NewOrder.OrderDate" class="text-danger"></span>
-</div>
- 
-    <!-- Example: If there's a single detail pre-filled -->
-    @if (Model.NewOrder.Details.Count > 0)
+    <div class="mb-3">
+        <label asp-for="NewOrder.OrderDate" class="form-label">Order Date</label>
+        <input asp-for="NewOrder.OrderDate" class="form-control" type="date" />
+        <span asp-validation-for="NewOrder.OrderDate" class="text-danger"></span>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.PreselectedProductName))
     {
-<h4>Product to Order</h4>
-<div class="mb-3">
-<label>Product ID</label>
-<input asp-for="NewOrder.Details[0].ProductId" class="form-control" readonly />
-</div>
-<div class="mb-3">
-<label>Quantity</label>
-<input asp-for="NewOrder.Details[0].Quantity" class="form-control" />
-</div>
-<!-- If you want to allow user to pick Depot, do so here. -->
+        <div class="alert alert-info">
+            You are ordering: @Model.PreselectedProductName
+        </div>
     }
- 
-    <button type="submit" class="btn btn-success">Create</button>
-<a asp-page="Index" class="btn btn-secondary">Cancel</a>
+
+    @if (Model.NewOrder.Details?.Count > 0)
+    {
+        <hr />
+        <h4>Order Details</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Quantity</th>
+                    <th>Depot ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.NewOrder.Details.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input asp-for="NewOrder.Details[@i].ProductId" class="form-control" />
+                            <span asp-validation-for="NewOrder.Details[@i].ProductId"></span>
+                        </td>
+                        <td>
+                            <input asp-for="NewOrder.Details[@i].Quantity" class="form-control" />
+                            <span asp-validation-for="NewOrder.Details[@i].Quantity"></span>
+                        </td>
+                        <td>
+                            <input asp-for="NewOrder.Details[@i].DepotId" class="form-control" />
+                            <span asp-validation-for="NewOrder.Details[@i].DepotId"></span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <button type="submit" class="btn btn-success me-2" formmethod="post">Create</button>
+
+    <!-- OPTIONAL: Let the user add another row for a new product before final create -->
+    <button type="submit" asp-page-handler="AddDetail" class="btn btn-secondary me-2" formmethod="post">
+        Add Another Detail
+    </button>
+
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>

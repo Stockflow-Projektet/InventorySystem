@@ -1,4 +1,4 @@
-﻿namespace Inventory.API.DTO_s
+﻿namespace Inventory.Core.DTO_s
 {
     public class OrderDto
     {

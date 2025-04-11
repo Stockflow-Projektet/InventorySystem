@@ -24,7 +24,7 @@ public class OrderMockService : IOrderService
         return Task.FromResult(_orders.AsEnumerable());
     }
 
-    public Task<OrderViewModel> GetOrderByIdAsync(long orderId)
+    public Task<OrderViewModel> GetOrderByIdAsync(int orderId)
     {
         var order = _orders.FirstOrDefault(o => o.OrderId == orderId);
         return Task.FromResult(order);

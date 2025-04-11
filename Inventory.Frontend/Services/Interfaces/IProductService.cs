@@ -8,7 +8,7 @@ namespace Inventory.Frontend.Services.Interfaces
     {
         Task<IEnumerable<ProductViewModel>> GetProductsAsync();
         Task<IEnumerable<ProductViewModel>> GetProductsByTypeAsync(string productType);
-        Task<ProductViewModel> GetProductByIdAsync(long productId);
+        Task<ProductViewModel> GetProductByIdAsync(int productId);
         Task CreateProductAsync(ProductViewModel product);
         // Add more if needed, e.g. Update, Delete, etc.
     }

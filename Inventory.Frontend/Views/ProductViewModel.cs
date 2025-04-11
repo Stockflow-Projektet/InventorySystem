@@ -5,7 +5,7 @@ namespace Inventory.Frontend.Views
 {
     public class ProductViewModel : IValidatableObject
     {
-        public long ProductId { get; set; }
+        public int ProductId { get; set; }
 
         // Always required, no matter the product type:
         [Required(ErrorMessage = "Product Type is required (B, P, or W).")]

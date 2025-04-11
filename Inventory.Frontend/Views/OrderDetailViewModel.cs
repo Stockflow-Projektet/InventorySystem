@@ -1,14 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Inventory.Frontend.Views;
-
-public class OrderDetailViewModel
+namespace Inventory.Frontend.Views
 {
-    public long DetailId { get; set; }
+    public class OrderDetailViewModel
+    {
+        public int DetailId { get; set; }
 
-    [Required] public long ProductId { get; set; }
+        [Required]
+        public int ProductId { get; set; }
 
-    [Range(1, 999999)] public long Quantity { get; set; }
+        [Range(1, 999999)]
+        public int Quantity { get; set; }
 
-    public long DepotId { get; set; }
+        public int DepotId { get; set; }
+    }
 }

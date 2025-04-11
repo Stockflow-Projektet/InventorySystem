@@ -137,7 +137,11 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a asp-page="/Orders/Create"
+                               asp-route-productId="@product.ProductId"
+                               class="btn btn-primary">
+                                Order
+                            </a>
                         </div>
                     </div>
                 </div>

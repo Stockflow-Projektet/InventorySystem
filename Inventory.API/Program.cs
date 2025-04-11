@@ -10,6 +10,7 @@ using Inventory.Core.Services.Implementations;
 using Inventory.Logging;  // <-- your custom logging
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using Inventory.Core.DTO_s;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -103,11 +104,11 @@ app.MapGet("/api/orders/{orderId}", async (int orderId, IOrderService orderServi
     await orderService.GetOrderById(orderId)
 );
 
-// Simplistic "create order" example
-app.MapPost("/api/orders", async ([FromBody] int detailId, IOrderService orderService) =>
+app.MapPost("/api/orders", async ([FromBody] OrderDto orderDto, IOrderService orderService) =>
 {
-    await orderService.PlaceOrder(detailId);
-    return Results.Ok();
+    // 'orderDto' is the entire JSON from the front end
+    int newOrderId = await orderService.PlaceOrder(orderDto);
+    return Results.Ok(new { orderId = newOrderId });
 });
 
 app.MapDelete("/api/orders/{orderId}", async (int orderId, IOrderService orderService) =>
