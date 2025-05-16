@@ -1,14 +1,18 @@
 # Inventory — full-stack stationery shop demo  
 > Browse, add, and manage books, paper, and writing tools end-to-end.
 
-## 🛠 Tech Stack & Skills Demonstrated
+## 🛠 Tech Stack & Skills Demonstrated - By Johan Hoppe Rauer
 | Area | Stack / Library | Highlights shown in this project |
 |------|-----------------|-----------------------------------|
-| Front-end | **ASP.NET Core Razor Pages**, Bootstrap 5 | Dynamic forms, modals, DI-switchable mock vs. live services |
-| Back-end core | **C# 10**, Dapper, SQL Server LocalDB | Clean architecture, repository pattern, factory resolvers |
-| Logging | **Serilog** | Multi-file per-run logs (trace → fatal) via shared configurator |
-| Testing | **xUnit**, Bunit, Moq | Unit & integration tests for DAL and Razor Pages |
-| Dev & Ops | .NET CLI, GitHub Actions | Restore/build/test CI pipeline, conventional commits |
+| Front-end UI | **ASP.NET Core Razor Pages**, Bootstrap 5 | Dynamic forms, modal dialogs, DI-switchable services |
+| Front-end Scripting | **JavaScript/ES6** | Client-side type-aware field toggling & preview modal |
+| API Layer | **ASP.NET Core Minimal API** | RESTful endpoints (`/api/products`, `/api/orders`), Swagger |
+| Core Domain | **C# 10**, Dapper | Repository pattern, factory resolver, polymorphic models |
+| Database | **SQL Server LocalDB** | Singleton connection factory, script-free Dapper migrations |
+| Logging | **Serilog** | Per-run multi-file logs (trace → fatal) via central configurator |
+| Testing | **xUnit**, Bunit, Moq | DAL integration tests, Razor Page unit tests, mock HttpClient |
+| CI / DevOps | **GitHub Actions**, .NET CLI | Restore → build → test pipeline, artifact logs |
+| Patterns & Design | Repository, Factory, Singleton | Clean separation of concerns, easy mocking |
 
 ## ✨ What the App Does
 
